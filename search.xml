@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>A Comprehensive Introduction to Label Noise</title>
+      <link href="2021/05/25/Paper-25/"/>
+      <url>2021/05/25/Paper-25/</url>
+      
+        <content type="html"><![CDATA[<p><a href="https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.433.8045&amp;rep=rep1&amp;type=pdf">下载链接</a></p><h2 id="0x00-Abstract">0x00 Abstract</h2><p>In classification, it is often difficult or expensive to obtain completely accurate and reliable labels. Indeed, labels may be polluted by label noise, due to e.g. insufficient information, expert mistakes, and encoding errors. <strong>The problem is that errors in training labels that are not properly handled may deteriorate the accuracy of subsequent predictions, among other effects.</strong> Many works have been devoted to label noise and this paper provides a concise and comprehensive introduction to this research topic. In particular, it reviews the types of label noise, their consequences and a number of state of the art approaches to deal with label noise.</p><h2 id="0x01-Introduction">0x01 Introduction</h2><blockquote><p>In classification, it is both expensive and difficult to obtain reliable labels, yet traditional classifiers assume and expect a perfectly labelled training set.</p></blockquote><p>导致错误标签的几种场景：</p><ul><li>现有信息不足以设置可靠的标签。语言描述过于局限、数据质量很差。</li><li>专家标签时的失误。</li><li>标签的主观性，不同的人看待同一事物可能存在不同的意见。</li><li>通信传输或编码时，导致标签产生错误</li></ul><p>三种缺失值的情况：</p><ul><li><strong>完全随机缺失</strong> (Missing completely at random, MCAR)<br>缺失数据发生的概率与任何值均无关，包括观测到的与缺失的值</li><li><strong>随机缺失</strong> (Missing at random, MAR)<br>缺失数据发生的概率与观测到的其他变量的值有关,<strong>但与它本身的值无关</strong>，例如体重信息是否缺失与性别变量有关，女性群体体重信息缺失的概率更高</li><li><strong>非随机缺失</strong> (Not missing at random, NMAR)<br>缺失数据发生的概率<strong>与它本身的值有关</strong>，例如学历信息缺失的群体往往是学历最低的群体，是不可忽略的缺失形式</li></ul><blockquote><p>一定程度上，标签缺失也可以理解为一种标签错误，下文用Label Noise（标签噪声）统一代指。</p></blockquote><h2 id="0x02-Consequences-of-Label-Noise">0x02 Consequences of Label Noise</h2><ul><li>Label noise decreases the prediction performances<ul><li>Boosting is also well known to be affected by label noise .</li></ul></li><li>The number of necessary training instances may increase, as well as the complexity of inferred models.</li><li>The observed frequencies of the possible classes may be altered, which is of particular importance in medical contexts.</li><li>Other related tasks like feature selection or feature ranking  are also impacted by label noise.</li></ul><blockquote><p>主要影响：</p><p>1.因为标签噪声，降低模型准确率（主要是指分类模型，不特指分类模型，会把第三点包含）</p><p>2.需要更多的数据训练模型（感觉这句话的意思，加大数据量，降低标签噪声的占比），相关模型的复杂度可能会增加（模型在处理数据时，可能将噪声作为特征训练）</p><p>3.用于数据收集的模型，如果此类中标签噪声可能导致对某类样本的数量增加。比如将“9”一直标记成“6”</p></blockquote><h2 id="0x03-State-of-the-Art-Methods-to-Deal-with-Label-Noise">0x03 State of the Art Methods to Deal with Label Noise</h2><blockquote><p>There exist three types of approaches in the literatures:</p><ul><li>label noise-robust models,</li><li>data cleansing methods</li><li>label noise-tolerant learning algorithms.</li></ul></blockquote><h3 id="1-Label-Noise-Robust-Models">1. Label Noise-Robust Models</h3><blockquote><p>From a theoretical point of view, learning algorithms are seldom completely robust to label noise, except in some simple cases.</p><hr><p>某些方法在特殊情况的健壮性会比较好，这种方法缺少一般性</p></blockquote><h3 id="2-Data-Cleansing-Methods">2. Data Cleansing Methods</h3><blockquote><p>A simple method to deal with label noise is to remove instances that appear to be mislabelled.</p></blockquote><ul><li><code>阈值</code>：设置异常度量，超过异常阈值删除</li><li><code>复杂度</code>：删除不成比例增加模型复杂度的实例（？怎么理解？）</li><li><code>分类器</code>：删除被分类器误分的实例（这样会删除大量的数据，而且还和分类器的准确度相关）</li><li><code>投票过滤</code>：所有的学习者对其投票，一致（或多数）学习者同意将其移除（多个学习者？分布式？）</li><li><code>其他过滤</code>：对学习有比较大影响的实例会被删除，或者看起来很可疑的数据</li><li><code>kNN-based</code>: 启发式方法，减少邻居（这些邻居的删除不会影响其他实例错误分类）</li><li><code>权重</code>：AdaBoost会给错误标签实例分配较大的权重，以此来挑选标签噪声</li><li><code>半监督学习</code>：删除实例的标签而不是实例，以此进行半监督学习</li></ul><h3 id="3-Label-Noise-Tolerant-Learning-Algorithms">3. Label Noise-Tolerant Learning Algorithms</h3><blockquote><p>In the probabilistic community, some authors claim that detecting label noise is impossible without making assumptions.</p></blockquote><ul><li>优先级考虑</li><li>概率方法</li><li>频率方法</li><li>非概率的模型：如神经网络、支持向量积。。</li></ul><hr><p>不适合看这类，烧脑。。。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> paper </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Label Noise </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Client Selection for Federated Learning With Non-IID Data in Mobile Edge Computing</title>
       <link href="2021/05/23/Paper-24/"/>
       <url>2021/05/23/Paper-24/</url>
@@ -51,7 +76,7 @@
             
             <tag> Client Selection </tag>
             
-            <tag> Noisy </tag>
+            <tag> Label Noise </tag>
             
         </tags>
       
