@@ -29,19 +29,6 @@
     
     
     <entry>
-      <title>HFEL: Joint Edge Association and Resource Allocation for Cost-Efficient Hierarchical Federated Edge Learning</title>
-      <link href="2021/06/02/Paper-29/"/>
-      <url>2021/06/02/Paper-29/</url>
-      
-        <content type="html"><![CDATA[<p><a href="https://ieeexplore.ieee.org/abstract/document/9127160/">下载链接</a></p><p><strong>Published in:</strong> <a href="https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=7693">IEEE Transactions on Wireless Communications</a></p><p>这篇论文是在多层联邦的情况下，讨论节点调度和资源分配的问题</p><h2 id="0x00-Abstract">0x00 Abstract</h2><p>By leveraging edge servers as intermediaries to perform partial model aggregation in proximity and relieve core network transmission overhead, it enables great potentials in low-latency and energy-efficient FL. Hence we introduce a novel Hierarchical Federated Edge Learning (HFEL) framework in which model aggregation is partially migrated to edge servers from the cloud.</p>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Learning to Compare: Relation Network for Few-Shot Learning</title>
       <link href="2021/05/31/Paper-28/"/>
       <url>2021/05/31/Paper-28/</url>
