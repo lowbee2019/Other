@@ -1,0 +1,371 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>暑期实训SDN--Linux基础 | LowBee's Blog</title><meta name="keywords" content="Linux"><meta name="author" content="Low Bee"><meta name="copyright" content="Low Bee"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="SDN: Linux基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="暑期实训SDN--Linux基础">
+<meta property="og:url" content="http://lowbee.fun/2020/06/29/%E6%9A%91%E6%9C%9F%E5%AE%9E%E8%AE%ADSDN-Linux%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="LowBee&#39;s Blog">
+<meta property="og:description" content="SDN: Linux基础">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/Screen-Shot-2019-05-01-at-2.32.04-pm.png">
+<meta property="article:published_time" content="2020-06-29T12:06:50.000Z">
+<meta property="article:modified_time" content="2021-04-25T12:12:07.776Z">
+<meta property="article:author" content="Low Bee">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/Screen-Shot-2019-05-01-at-2.32.04-pm.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://lowbee.fun/2020/06/29/%E6%9A%91%E6%9C%9F%E5%AE%9E%E8%AE%ADSDN-Linux%E5%9F%BA%E7%A1%80/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-197495331-1"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'UA-197495331-1');
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-04-25 20:12:07'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/头像.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">70</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">40</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">8</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/Screen-Shot-2019-05-01-at-2.32.04-pm.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">LowBee's Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">暑期实训SDN--Linux基础</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2020-06-29T12:06:50.000Z" title="Created 2020-06-29 20:06:50">2020-06-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-04-25T12:12:07.776Z" title="Updated 2021-04-25 20:12:07">2021-04-25</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/SDN/">SDN</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">1.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>5min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="暑期实训SDN--Linux基础"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>SDN: Linux基础</h1>
+<span id="more"></span>
+<h2 id="0x01-Ubuntu-系统介绍">0x01 Ubuntu 系统介绍</h2>
+<p>Ubuntu 目录结构如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/20200629201739.png" alt=""></p>
+<blockquote>
+<p>bin：存放二进制可执行文件(ls,cat,mkdir等)<br>
+boot：存放用于系统引导时使用的各种文件<br>
+dev：用于存放设备文件<br>
+etc：存放系统配置文件<br>
+home：存放所有用户文件的根目录<br>
+lib：存放跟文件系统中的程序运行所需要的共享库及内核模块<br>
+mnt：系统管理员安装临时文件系统的安装点<br>
+opt：额外安装的可选应用程序包所放置的位置<br>
+proc：虚拟文件系统，存放当前内存的映射<br>
+root：超级用户目录<br>
+sbin：存放二进制可执行文件，只有root才能访问<br>
+tmp：用于存放各种临时文件<br>
+usr：用于存放系统应用程序，比较重要的目录/usr/local 本地管理员软件安装 目录<br>
+var：用于存放运行时需要改变数据的文件</p>
+</blockquote>
+<p>软件安装：</p>
+<p>方式一：<code>sudo apt-get install net-tools</code> 安装前最好更新一下软件包</p>
+<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">-h, --help              // 查看帮助文档</span><br><span class="line">-v, --version           // 查看 apt-get 的版本</span><br><span class="line">-y                      // 在需要确认的场景中回应 yes</span><br><span class="line">-s, --dry-run           // 模拟执行并输出结果</span><br><span class="line">-d, --download-only     // 把包下载到缓存中而不安装</span><br><span class="line">--only-upgrade          // 更新当前版本的包而不是安装新的版本</span><br><span class="line">--no-upgrade            // 在执行 install 命令时，不安装已安装包的更新</span><br><span class="line">-q, --quiet             // 减少输出</span><br><span class="line">--remove								// 只删除程序文件，保持相关配置</span><br><span class="line">--purge                 // 配合 remove 命令删除包的配置文件</span><br><span class="line">--reinstall             // 重新安装已安装的包或其新版本</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>方式二：<code>sudo dpkg -i package.deb</code></p>
+<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">-i package  				 //安装软件</span><br><span class="line">-L package  				 //列出与该包相关联的文件</span><br><span class="line">-l package  				 //显示包的版本</span><br><span class="line">-r package					 //移除软件(保留配置)</span><br><span class="line">-P package					 //移除软件(不保留配置)</span><br><span class="line">-s package					 //查找包的详细信息</span><br><span class="line">--configure package  //配置包</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>网络配置：</p>
+<p>通过配置文件配置网络 <strong>/etc/network/interfaces</strong></p>
+<p>动态获取IP时interface文件默认内容为：</p>
+<blockquote>
+<p>auto eth0</p>
+<p>iface eth0 inet dhcp</p>
+</blockquote>
+<p>可将其改为静态IP：</p>
+<blockquote>
+<p>auto eth0</p>
+<p>iface eth0 inet static</p>
+<p>address 192.168.11.138</p>
+<p>netmask 255.255.255.0</p>
+<p>gateway 192.168.11.254</p>
+</blockquote>
+<p>修改之后需要执行 <code>/etc/init.d/networking restart </code>命令重启网卡使配置生效。</p>
+<h2 id="0x02-Linux-常用命令">0x02 Linux 常用命令</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">top</th>
+<th>显示当前系统中进程耗费资源的情况</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-p</td>
+<td>指定单独监控某个进程的状态</td>
+</tr>
+<tr>
+<td style="text-align:center">-c</td>
+<td>显示整个命令行，而不是只显示命令名</td>
+</tr>
+<tr>
+<td style="text-align:center">-d</td>
+<td>指定平面刷新间隔</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">uname</th>
+<th style="text-align:left">显示系统信息</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-a</td>
+<td style="text-align:left">显示全部信息</td>
+</tr>
+<tr>
+<td style="text-align:center">-r</td>
+<td style="text-align:left">显示操作系统发行编号</td>
+</tr>
+<tr>
+<td style="text-align:center">-s</td>
+<td style="text-align:left">显示操作系统名称</td>
+</tr>
+<tr>
+<td style="text-align:center">-v</td>
+<td style="text-align:left">显示操作系统版本</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">ps</th>
+<th>显示瞬间的进程状态，是静止的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-A</td>
+<td>显示当前用户的所有进程</td>
+</tr>
+<tr>
+<td style="text-align:center">-a</td>
+<td>显示当前系统的所有进程</td>
+</tr>
+<tr>
+<td style="text-align:center">-u</td>
+<td>以用户为主的进程状态</td>
+</tr>
+<tr>
+<td style="text-align:center">-x和a合用</td>
+<td>显示进程完整信息</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">tar</th>
+<th>备份压缩命令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-c</td>
+<td>建立一个归档文件的参数指令</td>
+</tr>
+<tr>
+<td style="text-align:center">-x</td>
+<td>解开一个压缩文件的参数指令</td>
+</tr>
+<tr>
+<td style="text-align:center">-z</td>
+<td>gzip 压缩</td>
+</tr>
+<tr>
+<td style="text-align:center">-j</td>
+<td>bzip2 压缩</td>
+</tr>
+<tr>
+<td style="text-align:center">-v</td>
+<td>压缩的过程中显示文件</td>
+</tr>
+<tr>
+<td style="text-align:center">-f</td>
+<td>使用档名，在 f 之后要立即接档名</td>
+</tr>
+<tr>
+<td style="text-align:center">-tf</td>
+<td>查看归档文件里面的文件</td>
+</tr>
+</tbody>
+</table>
+<p><strong>常用解压缩命令</strong>：</p>
+<p>解压：<code>tar zxvf FileName.tar.gz</code></p>
+<p>压缩：<code>tar zcvf FileName.tar.gz DirName</code></p>
+<p>解压：<code>unzip FileName.zip</code><br>
+压缩：<code>zip FileName.zip DirName</code></p>
+<p>解压：<code>rar x FileName.rar</code><br>
+压缩：<code>rar a FileName.rar DirName</code></p>
+<p><strong>网络配置命令</strong>：<code>ifconfig</code>查看网络接口信息</p>
+<blockquote>
+<p>ifconfig [网络设备名]，如ifconfig eth1</p>
+<p>配置网络接口<br>
+ifconfig [网络设备名] [IP、掩码信息]<br>
+ifconfig    eth0 192.168.1.3 broadcast 192.168.1.254 netmask 255.255.0.0<br>
+ifconfig    eth0:1 10.0.0.3 broadcast 10.0.0.254 netmask 255.255.0.0</p>
+<p>激活/停止网络设备<br>
+ifconfig [网络设备名] up/down<br>
+ifconfig eth0 up<br>
+ifconfig eth0 down</p>
+</blockquote>
+<h2 id="0x03-VI-VIM编辑器">0x03 VI/VIM编辑器</h2>
+<p>三种模式转换如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/20200629212400.png" alt=""></p>
+<p>配置文件位置：<code>/etc/vim/vimrc</code></p>
+<blockquote>
+<p>syntax on			#语法高亮<br>
+set autoindent   #自动换行<br>
+set number	    #显示行号<br>
+set cursorline     #光标所在的当前行高亮<br>
+set showmatch  #显示括号匹配<br>
+set tabstop=4	  #tab建为4个空格</p>
+</blockquote>
+<h2 id="0x04-网站搭建">0x04 网站搭建</h2>
+<p>个人博客：Ubuntu 16.04 + nginx + wordpress</p>
+<h3 id="安装并配置nginx：">安装并配置nginx：</h3>
+<p>1.<code>apt install nginx</code></p>
+<p>2.新建index.html文件</p>
+<p>3.在 <code>/etc/nginx/conf.d/</code>文件下新增demo.conf配置文件</p>
+<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">server&#123;</span><br><span class="line"></span><br><span class="line"> 	listen 80; 		#监听端口</span><br><span class="line"> 	server_name localhost;	#域名解析</span><br><span class="line"> 	root /home/lowbee/demo; #html文件所在目录</span><br><span class="line"> 	</span><br><span class="line"> 	location /&#123;</span><br><span class="line">		index index.html; #html的文件</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>4.重新加载配置文件</p>
+<p><code>nginx -s reload</code></p>
+<h3 id="安装并配置wordpress：">安装并配置wordpress：</h3>
+<p>1.安装mysql：<code>apt install mysql-server</code></p>
+<p>2.安装php：<br>
+<code>apt install php7.0</code><br>
+<code>apt install libapache2-mod-php7.0</code><br>
+<code>apt install php7.0-mysql</code></p>
+<p>3.下载wordpress：<code>wget https://cn.wordpress.org/latest-zh_CN.tar.gz</code></p>
+<p>4.解压wordpress：<code>tar zvxf latest-zh-CN.tar.gz</code></p>
+<p>5.创建数据库wordpress：<code>create database wordpress</code></p>
+<p>6.创建wordpress的配置文件：<code>cp wp-config-sample.php wp-config.php</code></p>
+<p>7.修改wordpress的配置文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;** wordpress数据库的名称*&#x2F;</span><br><span class="line">define(&#39;DB_NAME&#39;,&#39;wordpress&#39;)</span><br><span class="line">&#x2F;** MySQL数据库用户名*&#x2F;</span><br><span class="line">define(&#39;DB_USER&#39;,&#39;root&#39;)</span><br><span class="line">&#x2F;** MySQL数据库密码*&#x2F;</span><br><span class="line">define(&#39;DB_PASSWORD&#39;,&#39;root&#39;)</span><br><span class="line">&#x2F;** MySQL主机*&#x2F;</span><br><span class="line">define(&#39;DB_HOST&#39;,&#39;localhost&#39;)</span><br><span class="line">&#x2F;** 数据库所用编码*&#x2F;</span><br><span class="line">define(&#39;DB_CHARSET&#39;,&#39;utf8&#39;)</span><br><span class="line">&#x2F;** 数据库整理类型，不懂勿改*&#x2F;</span><br><span class="line">define(&#39;DB_COLLATE&#39;,&#39;&#39;)</span><br></pre></td></tr></table></figure>
+<p>8.复制wordpress到 <code>/var/www</code>文件夹下：<code>cp -r wordpress /var/www/</code></p>
+<p>9.新增nginx配置(<code>/etc/nginx/conf.d</code>)</p>
+<p>wordpress.conf (也可以demo.conf重命名)</p>
+<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line"></span><br><span class="line">listen 80;</span><br><span class="line">listen [::]:80;</span><br><span class="line">root /var/www/wordpress;</span><br><span class="line">index index.html index.php index.nginx-debian.html;</span><br><span class="line"></span><br><span class="line">server_name localhost;</span><br><span class="line"></span><br><span class="line">location / &#123;	</span><br><span class="line">	try_files $uri $uri/ =404;</span><br><span class="line"> &#125; </span><br><span class="line"></span><br><span class="line">location ~ \.php$ &#123;</span><br><span class="line"></span><br><span class="line">  include snippets/fastcgi-php.conf;</span><br><span class="line">  fastcgi_pass unix:/run/php/php7.0-fpm.sock;</span><br><span class="line"> &#125; </span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>10.重新加载配置文件：<code>nginx -s reload</code></p>
+<p>11.访问localhost安装wordpress</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Low Bee</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://lowbee.fun/2020/06/29/%E6%9A%91%E6%9C%9F%E5%AE%9E%E8%AE%ADSDN-Linux%E5%9F%BA%E7%A1%80/">http://lowbee.fun/2020/06/29/%E6%9A%91%E6%9C%9F%E5%AE%9E%E8%AE%ADSDN-Linux%E5%9F%BA%E7%A1%80/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linux/">Linux</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/Screen-Shot-2019-05-01-at-2.32.04-pm.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> Donate</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/06/30/%E6%9A%91%E6%9C%9F%E5%AE%9E%E8%AE%ADSDN-Python%E5%9F%BA%E7%A1%80/"><img class="prev-cover" src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/Screen-Shot-2019-05-01-at-2.32.04-pm.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">暑期实训SDN--Python基础</div></div></a></div><div class="next-post pull-right"><a href="/2020/06/24/mininet-wifi%E7%9A%84%E5%AE%89%E8%A3%85/"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/default.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">mininet-wifi的安装</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/头像.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Low Bee</div><div class="author-info__description">科研废物</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">70</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">40</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">8</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lowbee2019"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/lowbee2019" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:lowbee@vip.qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">社会主义接班人！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">SDN: Linux基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-Ubuntu-%E7%B3%BB%E7%BB%9F%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.1.</span> <span class="toc-text">0x01 Ubuntu 系统介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-Linux-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">1.2.</span> <span class="toc-text">0x02 Linux 常用命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-VI-VIM%E7%BC%96%E8%BE%91%E5%99%A8"><span class="toc-number">1.3.</span> <span class="toc-text">0x03 VI&#x2F;VIM编辑器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x04-%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA"><span class="toc-number">1.4.</span> <span class="toc-text">0x04 网站搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%B9%B6%E9%85%8D%E7%BD%AEnginx%EF%BC%9A"><span class="toc-number">1.4.1.</span> <span class="toc-text">安装并配置nginx：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%B9%B6%E9%85%8D%E7%BD%AEwordpress%EF%BC%9A"><span class="toc-number">1.4.2.</span> <span class="toc-text">安装并配置wordpress：</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/12/20/Paper-33/" title="ClusterGAN: Latent Space Clustering in Generative Adversarial Networks"><img src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/default.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ClusterGAN: Latent Space Clustering in Generative Adversarial Networks"/></a><div class="content"><a class="title" href="/2021/12/20/Paper-33/" title="ClusterGAN: Latent Space Clustering in Generative Adversarial Networks">ClusterGAN: Latent Space Clustering in Generative Adversarial Networks</a><time datetime="2021-12-20T02:47:34.000Z" title="Created 2021-12-20 10:47:34">2021-12-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/26/Reinforcement-Learning-ZouWei-3/" title="Reinforcement Learning ZouWei(III)"><img src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/f5d6603125a166875ed1666ca908e45b.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Reinforcement Learning ZouWei(III)"/></a><div class="content"><a class="title" href="/2021/11/26/Reinforcement-Learning-ZouWei-3/" title="Reinforcement Learning ZouWei(III)">Reinforcement Learning ZouWei(III)</a><time datetime="2021-11-26T01:26:30.000Z" title="Created 2021-11-26 09:26:30">2021-11-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/25/Reinforcement-Learning-ZouWei-2/" title="Reinforcement Learning ZouWei(II)"><img src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/f5d6603125a166875ed1666ca908e45b.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Reinforcement Learning ZouWei(II)"/></a><div class="content"><a class="title" href="/2021/11/25/Reinforcement-Learning-ZouWei-2/" title="Reinforcement Learning ZouWei(II)">Reinforcement Learning ZouWei(II)</a><time datetime="2021-11-25T11:24:14.000Z" title="Created 2021-11-25 19:24:14">2021-11-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/22/Reinforcement-Learning-ZouWei-1/" title="Reinforcement Learning ZouWei(I)"><img src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/f5d6603125a166875ed1666ca908e45b.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Reinforcement Learning ZouWei(I)"/></a><div class="content"><a class="title" href="/2021/11/22/Reinforcement-Learning-ZouWei-1/" title="Reinforcement Learning ZouWei(I)">Reinforcement Learning ZouWei(I)</a><time datetime="2021-11-22T13:46:09.000Z" title="Created 2021-11-22 21:46:09">2021-11-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/06/17/Paper-32/" title="Federated Evaluation of On-device Personalization"><img src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/default.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Federated Evaluation of On-device Personalization"/></a><div class="content"><a class="title" href="/2021/06/17/Paper-32/" title="Federated Evaluation of On-device Personalization">Federated Evaluation of On-device Personalization</a><time datetime="2021-06-17T13:07:02.000Z" title="Created 2021-06-17 21:07:02">2021-06-17</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/Screen-Shot-2019-05-01-at-2.32.04-pm.png')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Low Bee</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">Local search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.css"><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', '', 'katex-wrap')
+  })
+})()</script></div><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-show-text.min.js" data-mobile="true" data-text="富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="true" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"./live2d_models/haruna/22/model.2017.school.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body></html>

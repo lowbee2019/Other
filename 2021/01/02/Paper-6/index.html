@@ -1,0 +1,606 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Advances and Open Problems in Federated Learning | LowBee's Blog</title><meta name="keywords" content="Federated Learning"><meta name="author" content="Low Bee"><meta name="copyright" content="Low Bee"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一篇超长综述，不过这应该是假期前讲的最后一部分了 (～￣▽￣)～ 下载链接 0x00 Abstract Federated learning (FL) is a machine learning setting where many clients (e.g. mobile devices or whole organizations) collaboratively train a model">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Advances and Open Problems in Federated Learning">
+<meta property="og:url" content="http://lowbee.fun/2021/01/02/Paper-6/index.html">
+<meta property="og:site_name" content="LowBee&#39;s Blog">
+<meta property="og:description" content="一篇超长综述，不过这应该是假期前讲的最后一部分了 (～￣▽￣)～ 下载链接 0x00 Abstract Federated learning (FL) is a machine learning setting where many clients (e.g. mobile devices or whole organizations) collaboratively train a model">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/default.png">
+<meta property="article:published_time" content="2021-01-02T11:24:41.000Z">
+<meta property="article:modified_time" content="2021-05-24T03:00:17.422Z">
+<meta property="article:author" content="Low Bee">
+<meta property="article:tag" content="Federated Learning">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/default.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://lowbee.fun/2021/01/02/Paper-6/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-197495331-1"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'UA-197495331-1');
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-05-24 11:00:17'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/头像.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">70</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">40</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">8</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/default.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">LowBee's Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Advances and Open Problems in Federated Learning</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-01-02T11:24:41.000Z" title="Created 2021-01-02 19:24:41">2021-01-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-05-24T03:00:17.422Z" title="Updated 2021-05-24 11:00:17">2021-05-24</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/paper/">paper</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">3.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>13min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Advances and Open Problems in Federated Learning"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>一篇超长综述，不过这应该是假期前讲的最后一部分了 (～￣▽￣)～</p>
+<p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1912.04977.pdf">下载链接</a></p>
+<h2 id="0x00-Abstract">0x00 Abstract</h2>
+<p>Federated learning (FL) is a machine learning setting where many clients (e.g. mobile devices or whole organizations) collaboratively train a model under the orchestration of a central server (e.g. service provider), while keeping the training data decentralized. FL embodies the principles of focused data collection and minimization, and can mitigate many of the systemic privacy risks and costs resulting from traditional, centralized machine learning and data science approaches. Motivated by the explosive growth in FL research, this paper discusses recent advances and presents an extensive collection of open problems and challenges.</p>
+<h4 id="KEY-WORDS：Federated-Learning-Efficiency-Privacy-Robustness">KEY WORDS：Federated Learning,Efficiency,Privacy,Robustness</h4>
+<span id="more"></span>
+<h2 id="0x01-Introduction">0x01 Introduction</h2>
+<h2 id="0-三者对比">0.三者对比</h2>
+<p><img src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/20201218101919.png" alt=""></p>
+<p>本文主要讨论跨设备的FL。</p>
+<h3 id="1-跨设备联邦学习">1.跨设备联邦学习</h3>
+<ul>
+<li>
+<p>生命周期：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/20201218102426.png" alt=""></p>
+</li>
+<li>
+<p>工作流程：</p>
+<blockquote>
+<ul>
+<li>问题定义</li>
+<li>客户端指令：客户端收集、标记、存储训练数据。</li>
+<li>模拟测试(可选)：模型工程师使用代理数据进行模型原型设计和测试超参。</li>
+<li>联邦模型训练</li>
+<li>联邦模型评估：可以数据中心评估、客户端评估。</li>
+<li>部署：包括扩展性测试等。</li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p>联邦模型训练：</p>
+<blockquote>
+<ul>
+<li>节点选择</li>
+<li>参数下发</li>
+<li>节点训练</li>
+<li>参数聚合</li>
+<li>模型更新</li>
+</ul>
+</blockquote>
+<p>传统训练数量级：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/20201218105355.png" alt=""></p>
+<p>两个需要注意的方面：</p>
+<ul>
+<li>训练时的模型不要向用户展示预测结果。</li>
+<li>不能影响用户的正常设备使用。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-联邦学习的研究">2.联邦学习的研究</h3>
+<blockquote>
+<p>本文基于医院药物数据训练实验，涉及到上亿台设备。</p>
+</blockquote>
+<p>联邦学习的实验实施困难，这就导致从经验角度研究FL比其他ML困难很多。</p>
+<p>对于解决问题提出的一些建议：</p>
+<ul>
+<li>见<a href="https://lowbee.fun/2021/01/02/Paper-6/#0-%E4%B8%89%E8%80%85%E5%AF%B9%E6%AF%94">表一</a>的一些设置。</li>
+<li>仿真实验细节要写明，做到可复现。</li>
+<li>隐私和通信效率要放在首位。</li>
+</ul>
+<h2 id="0x02-Relaxing-the-Core-FL-Assumptions-Applications-to-Emerging-Settings-and-Scenarios">0x02 Relaxing the Core FL Assumptions: Applications to Emerging Settings and Scenarios</h2>
+<h3 id="1-Fully-Decentralized-Peer-to-Peer-Distributed-Learning">1.Fully Decentralized / Peer-to-Peer Distributed Learning</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/20201218210438.png" alt=""></p>
+<blockquote>
+<p>Fully Decenteralized learning 需要面对一些困难，比如：用什么模型、算法、超参？出错时，谁负责调试？</p>
+<p>A certain degree of trust of the participating clients in a central authority would still be needed to answer these questions. Alternatively, the decisions could be taken by the client who proposes the learning task, or collaboratively through a consensus scheme</p>
+<p>（分散、缺少信任机制）</p>
+</blockquote>
+<h4 id="算法困难">算法困难</h4>
+<ul>
+<li>
+<p><strong>Effect of network topology and asynchrony on decentralized SGD</strong></p>
+<blockquote>
+<p>网络线路不可靠，数据受损会被抛弃。</p>
+<p>网络稠密图中，收敛快，延迟高。</p>
+<p>MATCHA算法：分解网络稠密图，选择部分链接子集，实现并行；在重要部分通信更多，确保收敛更快，其他地方通信更少，节省通信延迟。</p>
+<p>Decentralized SGD可以用于异步更新。</p>
+</blockquote>
+</li>
+<li>
+<p><strong>Local-update decentralized SGD</strong></p>
+<blockquote>
+<p>本质上还是讨论Local SGD在non-IID数据上的收敛问题。</p>
+<p>明白non-IID数据分布式部署的情况下收敛情况、如何设计聚合策略达到更快的收敛是一个开放问题。</p>
+</blockquote>
+</li>
+<li>
+<p><strong>Personalization, and trust mechanisms</strong></p>
+<blockquote>
+<p>设计学习个性模型的算法也很重要。</p>
+<p>模型的健壮性：恶意参与者、数据投毒。</p>
+</blockquote>
+</li>
+<li>
+<p><strong>Gradient compression and quantization methods</strong></p>
+<blockquote>
+<p>如何将中心联邦结构的梯度压缩和量化技术不产生副作用的应用于完全去中心化联邦学习?</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="实际困难">实际困难</h4>
+<ul>
+<li>在完全去中心化联邦学习中，可以参考区块链的智能合约；</li>
+<li>区块链的数据可以公共访问，与FL的隐私保护相违背；</li>
+<li>FL保护模型需要安全聚合、处理掉线设备</li>
+<li>FL防止恶意参与者重构其他参与的隐私数据，需要使用客户端差分隐私（添加高斯噪声）</li>
+</ul>
+<h3 id="2-Cross-Silo-Federated-Learning">2.Cross-Silo Federated Learning</h3>
+<blockquote>
+<p>虽然Cross-Silo FL 条件比Cross-Device FL宽松，但也要一些要求很难达到。</p>
+<p>与企业组织的共享激励机制有关。（激励客户将其数据用于训练）</p>
+</blockquote>
+<h4 id="Data-partitioning">Data partitioning</h4>
+<ul>
+<li>可以按照样本划分（横向）、特征划分（纵向）</li>
+<li>（特征划分）基于特殊训练算法，可能需要一个中心服务器作为中立派。
+<ul>
+<li>客户端与之交换中间结果而不是模型参数，帮助其他参与者进行梯度计算。</li>
+<li>安全多方计算和同态加密用于保护中间结果，不被数据反推。</li>
+<li>联邦迁移学习：只共享一部分用户空间或特征空间。</li>
+</ul>
+</li>
+<li>（样本划分）受限于法律不能整合数据，不同组织之间协作训练，如不同银行诈骗检测，医院病情诊断。</li>
+<li>开源平台：FATE</li>
+</ul>
+<h4 id="Incentive-mechanisms">Incentive mechanisms</h4>
+<p>对参与者奖罚分明，激发参与积极性。</p>
+<ul>
+<li>根据参与者对模型的数据贡献划分奖励，维持长期参与</li>
+<li>奖励要与捍卫系统安全、优化系统效率相结合。</li>
+</ul>
+<h4 id="Differential-privacy">Differential privacy</h4>
+<ul>
+<li>第四部分参与者与威胁模型会仔细讨论跨孤岛FL。</li>
+<li>防范不同参与者会有不同的优先级。</li>
+<li>本地差分隐私：防范其他客户端的威胁。</li>
+<li>用户级隐私保证。</li>
+</ul>
+<h4 id="Tensor-factorization">Tensor factorization</h4>
+<ul>
+<li>多网站执行张量分解、并与协调服务器共享中间因子，保证数据隐私。</li>
+<li>现有方法：ADMM、EASGD(提高效率)</li>
+</ul>
+<h3 id="3-Split-Learning">3.Split Learning</h3>
+<blockquote>
+<p>将模型的训练过程划分，部署到不同的设备进行训练。</p>
+</blockquote>
+<ul>
+<li>
+<p>数据传播：</p>
+<ul>
+<li>
+<p>前向传播没有共享原始数据。</p>
+</li>
+<li>
+<p>反向传播，只有cut layer的梯度传给客户端。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/20201220160215.png" alt=""></p>
+</li>
+</ul>
+</li>
+<li>
+<p>常规设置：</p>
+<ul>
+<li>
+<p>引入训练过程的另一并行维度，例如客户端-服务端</p>
+</li>
+<li>
+<p>开放问题：<strong>边缘设备上Split Learning的并行问题</strong></p>
+</li>
+<li>
+<p>模型自动选择：客户端模型部分匹配服务端最佳模型部分。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>安全问题：</p>
+<ul>
+<li>根据交流数据反推数据</li>
+<li>NoPeek SplitNN：通信激活减少原始数据的相关性，分类交叉熵保证模型性能。</li>
+<li>NoPeek SplitNN核心思想：最小化原始输入数据与传输数据的相关性。</li>
+</ul>
+</li>
+</ul>
+<h2 id="0x03-Improving-Efficiency-and-Effectiveness">0x03 Improving Efficiency and Effectiveness</h2>
+<blockquote>
+<p>本节讨论如何提高效率，方法多种多样：优化算法、为不同设备提供不同模型、ML用于FL的调参建模调试、提高通信效率等。</p>
+</blockquote>
+<h3 id="1-Non-IID-Data-in-Federated-Learning">1.Non-IID Data in Federated Learning</h3>
+<blockquote>
+<p>不同的用户、不同的地区、不同时间等因素，导致数据非独立同分布。就算是和用户间序列相关的数据集也可以通过本地打乱实现非独立同分布。</p>
+</blockquote>
+<h4 id="Problems-with-Non-IID-Data">Problems with Non-IID Data</h4>
+<blockquote>
+<p><strong>Non-identical client distributions:</strong></p>
+<p>Rewriting <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mi>i</mi></msub><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P_i(x,y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span> as <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mi>i</mi></msub><mo stretchy="false">(</mo><mi>x</mi><mi mathvariant="normal">∣</mi><mi>y</mi><mo stretchy="false">)</mo><msub><mi>P</mi><mi>i</mi></msub><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P_i(x|y)P_i(y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span> and<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mi>i</mi></msub><mo stretchy="false">(</mo><mi>y</mi><mi mathvariant="normal">∣</mi><mi>x</mi><mo stretchy="false">)</mo><msub><mi>P</mi><mi>i</mi></msub><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P_i(y|x)P_i(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mord">∣</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span>。</p>
+<ul>
+<li>
+<p>Feature distribution skew (covariate shift)：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mi>i</mi></msub><mo stretchy="false">(</mo><mi>y</mi><mi mathvariant="normal">∣</mi><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P_i(y|x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mord">∣</span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span>相同，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mi>i</mi></msub><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P_i(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span>随节点变化</p>
+</li>
+<li>
+<p>Label distribution skew (prior probability shift)：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mi>i</mi></msub><mo stretchy="false">(</mo><mi>x</mi><mi mathvariant="normal">∣</mi><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P_i(x|y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span>相同，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mi>i</mi></msub><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P_i(y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span>随节点变化</p>
+</li>
+<li>
+<p>Same label, different features (concept shift)：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mi>i</mi></msub><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P_i(y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span>相同，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mi>i</mi></msub><mo stretchy="false">(</mo><mi>x</mi><mi mathvariant="normal">∣</mi><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P_i(x|y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span>随节点变化</p>
+</li>
+<li>
+<p>Same features, different label (concept shift)：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mi>i</mi></msub><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P_i(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span>相同，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mi>i</mi></msub><mo stretchy="false">(</mo><mi>y</mi><mi mathvariant="normal">∣</mi><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P_i(y|x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mord">∣</span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span>随节点变化</p>
+</li>
+<li>
+<p>Quantity skew or unbalancedness：不同节点，不同数据集</p>
+</li>
+<li>
+<p><strong>在真实环境数据集划分中如何刻画不同的设备是一个开放问题</strong>。</p>
+</li>
+</ul>
+<p><strong>Violations of independence:</strong></p>
+<ul>
+<li>参与训练的设备集发生变化，打破了原有的Non-IID数据集。</li>
+</ul>
+<p><strong>Dataset shift:</strong>（个人理解是，训练机和部署机不同导致模型扩展性降低的问题）</p>
+<ul>
+<li>Q和P分布的时间依赖性会导致数据偏移。</li>
+<li><strong>如何处理数据偏移是一个开放问题</strong>。</li>
+</ul>
+</blockquote>
+<h4 id="Strategies-for-Dealing-with-Non-IID-Data">Strategies for Dealing with Non-IID Data</h4>
+<blockquote>
+<p>为了效率常见方式：修改现有算法、设计新算法</p>
+<ul>
+<li>增加数据。使不同设备上的数据更相似。</li>
+<li>客户异质性需要重视目标函数的设计。</li>
+<li>本地训练。可以实现定制化模型，这就将non-IID的缺点转化成优点；也能解决客户可用性变化导致的独立性改变带来的问题。</li>
+</ul>
+</blockquote>
+<h3 id="2-Optimization-Algorithms-for-Federated-Learning">2.Optimization Algorithms for Federated Learning</h3>
+<blockquote>
+<p>算法：</p>
+<ul>
+<li>无状态。</li>
+<li>与其他技术相结合。</li>
+<li>现有算法：FedAvg &amp; local SGD ==&gt;满足数据本地限制和通信限制。</li>
+<li><strong>专门针对FL环境特征的新算法的开发仍然是一个重要的开放问题。</strong></li>
+</ul>
+</blockquote>
+<h4 id="Optimization-Algorithms-and-Convergence-Rates-for-IID-Datasets">Optimization Algorithms and Convergence Rates for IID Datasets</h4>
+<ul>
+<li>每轮中固定x，使用mini-batch SGD计算<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mi>M</mi></mrow><annotation encoding="application/x-tex">KM</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span></span>次梯度。</li>
+<li>每轮只关注M个客户端</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/20210102151928.png" alt=""></p>
+<ul>
+<li>问题：
+<ul>
+<li>参数设计：时间开销（通信、本地计算）</li>
+<li>参数设计：模型聚合方法（是否有利于收敛）</li>
+<li>收敛速度能否达到mini-batch SGD？</li>
+<li>参与者掉队问题的进一步分析</li>
+<li>参与规模与设备差异的trade-off</li>
+</ul>
+</li>
+</ul>
+<h4 id="Optimization-Algorithms-and-Convergence-Rates-for-Non-IID-Datasets">Optimization Algorithms and Convergence Rates for Non-IID Datasets</h4>
+<p>现有的一些成果：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/20210112185158.png" alt=""></p>
+<p>设备数据差异，即每次选择设备就是采样过程。</p>
+<ul>
+<li>强凸函数有利于问题分析、限制梯度方差的边界</li>
+<li>Decentralized SGD 的应用</li>
+<li>Momentum 模型:动量算法？</li>
+<li>Variance-reduction</li>
+</ul>
+<h3 id="3-Multi-Task-Learning-Personalization-and-Meta-Learning">3.Multi-Task Learning,Personalization,and Meta-Learning</h3>
+<blockquote>
+<p>在部署阶段，为不同的用户部署不同的模型，这往往与Non-IID数据相关。</p>
+</blockquote>
+<h4 id="Personalization-via-Featurization">Personalization via Featurization</h4>
+<blockquote>
+<p>为不同的用户部署不同的模型参数(权重)。</p>
+</blockquote>
+<ul>
+<li>
+<p>通过增加用户和内容属性可以实现（增加训练集，覆盖更多的用户，但这不是个性定制模型）。</p>
+</li>
+<li>
+<p>基于设备的个性化模型参数能够满足这个要求（结合用户输入习惯、聊天上下文、常用词等）。</p>
+<p>这只是针对用户的输入，很少有其他数据可以包含这种特征。</p>
+</li>
+<li>
+<p><strong>研究结合环境信息进行不同任务的模型构建是一个开放问题。</strong></p>
+</li>
+</ul>
+<h4 id="Multi-Task-Learning">Multi-Task Learning</h4>
+<ul>
+<li>大多数Multi-Task Learning考虑设备一直参与训练，这对跨数据孤岛的FL比较友好，对跨设备FL不友好。</li>
+<li><strong>设计新算法，重新考虑全局模型与每个用户模型的关系，开放问题。</strong></li>
+</ul>
+<h4 id="Local-Fine-Tuning-and-Meta-Learning">Local Fine Tuning and Meta-Learning</h4>
+<ul>
+<li>
+<p>Local Fine Tuning：</p>
+<blockquote>
+<p>​		部署阶段，模型下发后，会在本地进行参数微调，主要就是利用本地数据再进行训练，然后投入预测使用。还有其他方式：迁移学习、领域自适应、与本地个人模型相结合。<br>
+​		这些技术主要应用在source-target领域，结构更加丰富的FL还不适用。</p>
+</blockquote>
+</li>
+<li>
+<p>Meta-Learning:</p>
+<blockquote>
+<p>model-agnostic meta-learning (MAML)，可以作为探索模型适应任务的起点（只需要一些本地梯度）。</p>
+<p>MAML&amp;FL的问题：</p>
+<ul>
+<li>有监督学习的MAML评估算法注重图像分类。</li>
+<li>全局模型与个性化模型之间的准确率差距：个性化应该比FL更适用？！但尚未统一标准衡量个性化模型性能。</li>
+<li>同结构同性能的模型，会因为训练方式不同导致个性化能力不同。</li>
+<li>Multi-task/LTL框架下的个性化和隐私。</li>
+<li>无参的LTL算法能否用于FL？</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h4 id="When-is-a-Global-FL-trained-Model-Better">When is a Global FL-trained Model Better?</h4>
+<p>取决于数据在参与者中的分布！！！</p>
+<h3 id="4-Adapting-ML-Workflows-for-Federated-Learning">4.Adapting ML Workflows for Federated Learning</h3>
+<h4 id="Hyperparameters-Tuning">Hyperparameters Tuning</h4>
+<ul>
+<li>
+<p>使用不同的超参在资源受限的移动设备进行训练显然是受限的。</p>
+</li>
+<li>
+<p>HPO关注的是模型的准确率而不是通信计算效率。</p>
+</li>
+<li>
+<p><strong>可以考虑FL下的HPO的效能目标。</strong></p>
+</li>
+<li>
+<p>要易于调参：像中心化训练的学习率等、FL也可以探索。</p>
+<blockquote>
+<p>Federated learning adds potentially more hyperparameters — separate tuning of the aggregation / global model update rule and local client optimizer, number of clients selected per round, number of local steps per round, configuration of update compression algorithms, and more. In addition to a higher-dimensional search space, federated learning often also requires longer wall-clock training times and limited compute resources.</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="Neural-Architecture-Design（Neuarl-Architecture-Search-NAS）">Neural Architecture Design（Neuarl Architecture Search,NAS）</h4>
+<ul>
+<li>
+<p>受限于预定义的网络模型，开发者在没接触训练数据之前选择的预定义模型可能不是最优的。</p>
+</li>
+<li>
+<p>对于特殊数据集上的特殊任务，常见的三种NAS算法：</p>
+<ul>
+<li>Evolutionary Algorithms</li>
+<li>Reinforcement Learning</li>
+<li>Gradinet Desent：梯度反向传播、权值共享</li>
+</ul>
+</li>
+<li>
+<p><strong>Weight Agnostic Neural Networks</strong>：如果能用于FL，可以不需要协作训练。</p>
+<blockquote>
+<p><strong>Weight Agnostic Neural Networks</strong>其固定网络的参数，通过更新网络的结构来优化神经网络</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="Debugging-and-Interpretability-for-FL">Debugging and Interpretability for FL</h4>
+<ul>
+<li>在ML工作流程中，为了任务训练，经验丰富的建模者会审查数据（数据完整性、调试错误分类、处理异常值、手动标记）==》违背FL的隐私安全</li>
+<li><strong>对待去中心化数据，需要研究隐私保护技术解决上面的问题，这也是一个开放问题。</strong></li>
+<li>如何提高FL DP generative models的保真度。</li>
+</ul>
+<h3 id="5-Communication-and-Compression">5.Communication and Compression</h3>
+<blockquote>
+<ul>
+<li>无线连接、客户端网络速率慢。</li>
+<li>模型更新稀疏化、量化能够大大较少通信开销，而且对准确率影响很小。</li>
+<li>对通信速率的理论研究往往会忽略优化算法。（实际很难到达理论结果）</li>
+</ul>
+</blockquote>
+<h4 id="Compression-objectives">Compression objectives</h4>
+<table>
+<thead>
+<tr>
+<th>objectives</th>
+<th>where</th>
+<th>symbol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gradient compression</td>
+<td>clinets --&gt; server</td>
+<td>(a)</td>
+</tr>
+<tr>
+<td>Model broadcast compression</td>
+<td>server --&gt;clients</td>
+<td>(b)</td>
+</tr>
+<tr>
+<td>Local computation reduction</td>
+<td>local training procedure</td>
+<td>©</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>(a)在执行过程中作用比较大</li>
+<li>对(a)的研究较多、(b)的较少</li>
+<li>跨设备FL不能假设设备保留了任何状态，但跨数据孤岛FL不同(同一设备可以重复参与计算)，这种情况下可以解决(a),(b)。</li>
+<li><strong>对解决上述三个问题的同时生成紧凑模型的研究有很大的应用潜力。</strong></li>
+<li>研究数据相关压缩方案：对数据压缩和梯度压缩都有很大的提升。</li>
+</ul>
+<h4 id="Compatibility-with-differential-privacy-and-secure-aggregation">Compatibility with differential privacy and secure aggregation</h4>
+<ul>
+<li><strong>安全聚合&amp;差分隐私</strong>与<strong>压缩&amp;量化</strong>通信不可兼得。(前者均需要增加数据，与量化方法相违背)</li>
+<li><strong>安全聚合&amp;差分隐私与压缩相结合是一个开放问题。</strong></li>
+</ul>
+<h4 id="Wireless-FL-co-design">Wireless-FL co-design</h4>
+<blockquote>
+<p>无线干扰、噪声信道、信道波动会阻碍信息交换</p>
+</blockquote>
+<ul>
+<li>
+<p>传统解决方法：如知识蒸馏（FD）等。</p>
+<p>节点之间传输模型输出参数(对数函数，应该是数据预处理结果)而不是模型参数(梯度和权值)。</p>
+</li>
+<li>
+<p>新思想：利用无线信道作为数据聚合。</p>
+<p>不同的节点发送不同的模拟波，在服务端进行叠加，权重是无线频道系数。聚合快，参与节点越多训练越快。优于传统的正交频分复用。</p>
+</li>
+</ul>
+<h3 id="6-Application-To-More-Types-of-ML-Problems-and-Models">6.Application To More Types of ML Problems and Models</h3>
+<blockquote>
+<p>目前FL主要考虑了监督学习。对于其他ML(强化学习、半监督、无监督、激活学习、在线学习)是开放挑战。</p>
+<p>本节引入贝叶斯方法，意图利用贝叶斯方法为经典联邦学习提供概念上的提升，有学者利用贝叶斯方法对Non-IID数据和跨平台的模型聚合。</p>
+</blockquote>
+<ul>
+<li>大多数深度学习模型无法解释不确定性也无法对参数学习进行概率解释。</li>
+<li>贝叶斯神经网路对过拟合有较好的健壮性、可以利用小型数据集学习。</li>
+<li>结合贝叶斯方法，降低不确定性。未来数据增长，可以实现网络决策。</li>
+</ul>
+<h2 id="0x04-Preserving-the-Privacy-of-User-Data">0x04 Preserving the Privacy of User Data</h2>
+<h2 id="0x05-Robustness-to-Attacks-and-Failures">0x05 Robustness to Attacks and Failures</h2>
+<h2 id="0x06-Ensuring-Fairness-and-Addressing-Sources-of-Bias">0x06 Ensuring Fairness and Addressing Sources of Bias</h2>
+<h2 id="Note">Note:</h2>
+<ul>
+<li>MAML</li>
+<li>本地差分隐私与差分隐私</li>
+<li>贝叶斯卷积神经网络</li>
+<li>Split Learning 的工作模式，及Nopeek-SplitNN的技术</li>
+<li>强化学习</li>
+<li>动量模型</li>
+<li>Decentralized SGD</li>
+</ul>
+<h2 id="参考：">参考：</h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/57864886">MAML</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/u010417185/article/details/83065506">Multi-Task Learning</a></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Low Bee</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://lowbee.fun/2021/01/02/Paper-6/">http://lowbee.fun/2021/01/02/Paper-6/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Federated-Learning/">Federated Learning</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/default.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> Donate</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/01/05/Paper-7/"><img class="prev-cover" src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/default.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">Proximal Policy Optimization Algorithms</div></div></a></div><div class="next-post pull-right"><a href="/2020/12/15/Paper-5/"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/default.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Local SGD Converges Fast and Communicates Little</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2020/09/23/Federated-Learning/" title="What is Federated Learning?"><img class="cover" src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/20210425200325.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-09-23</div><div class="title">What is Federated Learning?</div></div></a></div><div><a href="/2021/01/21/Paper-10/" title="Communication-Efficient On-Device Machine Learning: Federated Distillation and Augmentation under Non-IID Private Data"><img class="cover" src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/default.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-01-21</div><div class="title">Communication-Efficient On-Device Machine Learning: Federated Distillation and Augmentation under Non-IID Private Data</div></div></a></div><div><a href="/2021/03/30/Paper-12/" title="Heterogeneous Federated Learning"><img class="cover" src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/default.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-30</div><div class="title">Heterogeneous Federated Learning</div></div></a></div><div><a href="/2021/04/12/Paper-13/" title="Federated Learning with Non-IID Data"><img class="cover" src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/default.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-12</div><div class="title">Federated Learning with Non-IID Data</div></div></a></div><div><a href="/2021/04/22/Paper-14/" title="Game of Gradients: Mitigating Irrelevant clients in Federated Learning"><img class="cover" src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/20210422214408.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-22</div><div class="title">Game of Gradients: Mitigating Irrelevant clients in Federated Learning</div></div></a></div><div><a href="/2021/04/25/Paper-15/" title="Multi-Center Federated Learning"><img class="cover" src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/20210425212101.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-25</div><div class="title">Multi-Center Federated Learning</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/头像.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Low Bee</div><div class="author-info__description">科研废物</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">70</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">40</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">8</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lowbee2019"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/lowbee2019" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:lowbee@vip.qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">社会主义接班人！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x00-Abstract"><span class="toc-number">1.</span> <span class="toc-text">0x00 Abstract</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#KEY-WORDS%EF%BC%9AFederated-Learning-Efficiency-Privacy-Robustness"><span class="toc-number">1.0.1.</span> <span class="toc-text">KEY WORDS：Federated Learning,Efficiency,Privacy,Robustness</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-Introduction"><span class="toc-number">2.</span> <span class="toc-text">0x01 Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0-%E4%B8%89%E8%80%85%E5%AF%B9%E6%AF%94"><span class="toc-number">3.</span> <span class="toc-text">0.三者对比</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%B7%A8%E8%AE%BE%E5%A4%87%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0"><span class="toc-number">3.1.</span> <span class="toc-text">1.跨设备联邦学习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0%E7%9A%84%E7%A0%94%E7%A9%B6"><span class="toc-number">3.2.</span> <span class="toc-text">2.联邦学习的研究</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-Relaxing-the-Core-FL-Assumptions-Applications-to-Emerging-Settings-and-Scenarios"><span class="toc-number">4.</span> <span class="toc-text">0x02 Relaxing the Core FL Assumptions: Applications to Emerging Settings and Scenarios</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Fully-Decentralized-Peer-to-Peer-Distributed-Learning"><span class="toc-number">4.1.</span> <span class="toc-text">1.Fully Decentralized &#x2F; Peer-to-Peer Distributed Learning</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E5%9B%B0%E9%9A%BE"><span class="toc-number">4.1.1.</span> <span class="toc-text">算法困难</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E9%99%85%E5%9B%B0%E9%9A%BE"><span class="toc-number">4.1.2.</span> <span class="toc-text">实际困难</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Cross-Silo-Federated-Learning"><span class="toc-number">4.2.</span> <span class="toc-text">2.Cross-Silo Federated Learning</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Data-partitioning"><span class="toc-number">4.2.1.</span> <span class="toc-text">Data partitioning</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Incentive-mechanisms"><span class="toc-number">4.2.2.</span> <span class="toc-text">Incentive mechanisms</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Differential-privacy"><span class="toc-number">4.2.3.</span> <span class="toc-text">Differential privacy</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Tensor-factorization"><span class="toc-number">4.2.4.</span> <span class="toc-text">Tensor factorization</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Split-Learning"><span class="toc-number">4.3.</span> <span class="toc-text">3.Split Learning</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-Improving-Efficiency-and-Effectiveness"><span class="toc-number">5.</span> <span class="toc-text">0x03 Improving Efficiency and Effectiveness</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Non-IID-Data-in-Federated-Learning"><span class="toc-number">5.1.</span> <span class="toc-text">1.Non-IID Data in Federated Learning</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Problems-with-Non-IID-Data"><span class="toc-number">5.1.1.</span> <span class="toc-text">Problems with Non-IID Data</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Strategies-for-Dealing-with-Non-IID-Data"><span class="toc-number">5.1.2.</span> <span class="toc-text">Strategies for Dealing with Non-IID Data</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Optimization-Algorithms-for-Federated-Learning"><span class="toc-number">5.2.</span> <span class="toc-text">2.Optimization Algorithms for Federated Learning</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Optimization-Algorithms-and-Convergence-Rates-for-IID-Datasets"><span class="toc-number">5.2.1.</span> <span class="toc-text">Optimization Algorithms and Convergence Rates for IID Datasets</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Optimization-Algorithms-and-Convergence-Rates-for-Non-IID-Datasets"><span class="toc-number">5.2.2.</span> <span class="toc-text">Optimization Algorithms and Convergence Rates for Non-IID Datasets</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Multi-Task-Learning-Personalization-and-Meta-Learning"><span class="toc-number">5.3.</span> <span class="toc-text">3.Multi-Task Learning,Personalization,and Meta-Learning</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Personalization-via-Featurization"><span class="toc-number">5.3.1.</span> <span class="toc-text">Personalization via Featurization</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Multi-Task-Learning"><span class="toc-number">5.3.2.</span> <span class="toc-text">Multi-Task Learning</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Local-Fine-Tuning-and-Meta-Learning"><span class="toc-number">5.3.3.</span> <span class="toc-text">Local Fine Tuning and Meta-Learning</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#When-is-a-Global-FL-trained-Model-Better"><span class="toc-number">5.3.4.</span> <span class="toc-text">When is a Global FL-trained Model Better?</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Adapting-ML-Workflows-for-Federated-Learning"><span class="toc-number">5.4.</span> <span class="toc-text">4.Adapting ML Workflows for Federated Learning</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Hyperparameters-Tuning"><span class="toc-number">5.4.1.</span> <span class="toc-text">Hyperparameters Tuning</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Neural-Architecture-Design%EF%BC%88Neuarl-Architecture-Search-NAS%EF%BC%89"><span class="toc-number">5.4.2.</span> <span class="toc-text">Neural Architecture Design（Neuarl Architecture Search,NAS）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Debugging-and-Interpretability-for-FL"><span class="toc-number">5.4.3.</span> <span class="toc-text">Debugging and Interpretability for FL</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Communication-and-Compression"><span class="toc-number">5.5.</span> <span class="toc-text">5.Communication and Compression</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Compression-objectives"><span class="toc-number">5.5.1.</span> <span class="toc-text">Compression objectives</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Compatibility-with-differential-privacy-and-secure-aggregation"><span class="toc-number">5.5.2.</span> <span class="toc-text">Compatibility with differential privacy and secure aggregation</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Wireless-FL-co-design"><span class="toc-number">5.5.3.</span> <span class="toc-text">Wireless-FL co-design</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-Application-To-More-Types-of-ML-Problems-and-Models"><span class="toc-number">5.6.</span> <span class="toc-text">6.Application To More Types of ML Problems and Models</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x04-Preserving-the-Privacy-of-User-Data"><span class="toc-number">6.</span> <span class="toc-text">0x04 Preserving the Privacy of User Data</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x05-Robustness-to-Attacks-and-Failures"><span class="toc-number">7.</span> <span class="toc-text">0x05 Robustness to Attacks and Failures</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x06-Ensuring-Fairness-and-Addressing-Sources-of-Bias"><span class="toc-number">8.</span> <span class="toc-text">0x06 Ensuring Fairness and Addressing Sources of Bias</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Note"><span class="toc-number">9.</span> <span class="toc-text">Note:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%EF%BC%9A"><span class="toc-number">10.</span> <span class="toc-text">参考：</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/12/20/Paper-33/" title="ClusterGAN: Latent Space Clustering in Generative Adversarial Networks"><img src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/default.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ClusterGAN: Latent Space Clustering in Generative Adversarial Networks"/></a><div class="content"><a class="title" href="/2021/12/20/Paper-33/" title="ClusterGAN: Latent Space Clustering in Generative Adversarial Networks">ClusterGAN: Latent Space Clustering in Generative Adversarial Networks</a><time datetime="2021-12-20T02:47:34.000Z" title="Created 2021-12-20 10:47:34">2021-12-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/26/Reinforcement-Learning-ZouWei-3/" title="Reinforcement Learning ZouWei(III)"><img src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/f5d6603125a166875ed1666ca908e45b.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Reinforcement Learning ZouWei(III)"/></a><div class="content"><a class="title" href="/2021/11/26/Reinforcement-Learning-ZouWei-3/" title="Reinforcement Learning ZouWei(III)">Reinforcement Learning ZouWei(III)</a><time datetime="2021-11-26T01:26:30.000Z" title="Created 2021-11-26 09:26:30">2021-11-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/25/Reinforcement-Learning-ZouWei-2/" title="Reinforcement Learning ZouWei(II)"><img src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/f5d6603125a166875ed1666ca908e45b.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Reinforcement Learning ZouWei(II)"/></a><div class="content"><a class="title" href="/2021/11/25/Reinforcement-Learning-ZouWei-2/" title="Reinforcement Learning ZouWei(II)">Reinforcement Learning ZouWei(II)</a><time datetime="2021-11-25T11:24:14.000Z" title="Created 2021-11-25 19:24:14">2021-11-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/22/Reinforcement-Learning-ZouWei-1/" title="Reinforcement Learning ZouWei(I)"><img src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/f5d6603125a166875ed1666ca908e45b.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Reinforcement Learning ZouWei(I)"/></a><div class="content"><a class="title" href="/2021/11/22/Reinforcement-Learning-ZouWei-1/" title="Reinforcement Learning ZouWei(I)">Reinforcement Learning ZouWei(I)</a><time datetime="2021-11-22T13:46:09.000Z" title="Created 2021-11-22 21:46:09">2021-11-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/06/17/Paper-32/" title="Federated Evaluation of On-device Personalization"><img src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/default.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Federated Evaluation of On-device Personalization"/></a><div class="content"><a class="title" href="/2021/06/17/Paper-32/" title="Federated Evaluation of On-device Personalization">Federated Evaluation of On-device Personalization</a><time datetime="2021-06-17T13:07:02.000Z" title="Created 2021-06-17 21:07:02">2021-06-17</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/default.png')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Low Bee</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">Local search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.css"><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', '', 'katex-wrap')
+  })
+})()</script></div><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-show-text.min.js" data-mobile="true" data-text="富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="true" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"./live2d_models/haruna/22/model.2017.school.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body></html>

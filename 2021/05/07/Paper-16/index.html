@@ -1,0 +1,255 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>FedMD: Heterogenous Federated Learning via Model Distillation | LowBee's Blog</title><meta name="keywords" content="Federated Learning"><meta name="author" content="Low Bee"><meta name="copyright" content="Low Bee"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="企业级个性化模型定制">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FedMD: Heterogenous Federated Learning via Model Distillation">
+<meta property="og:url" content="http://lowbee.fun/2021/05/07/Paper-16/index.html">
+<meta property="og:site_name" content="LowBee&#39;s Blog">
+<meta property="og:description" content="企业级个性化模型定制">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/20210507214233.png">
+<meta property="article:published_time" content="2021-05-07T08:39:11.000Z">
+<meta property="article:modified_time" content="2021-05-24T03:04:49.223Z">
+<meta property="article:author" content="Low Bee">
+<meta property="article:tag" content="Federated Learning">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/20210507214233.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://lowbee.fun/2021/05/07/Paper-16/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-197495331-1"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'UA-197495331-1');
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-05-24 11:04:49'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/头像.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">70</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">40</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">8</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/20210507214233.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">LowBee's Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">FedMD: Heterogenous Federated Learning via Model Distillation</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-05-07T08:39:11.000Z" title="Created 2021-05-07 16:39:11">2021-05-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-05-24T03:04:49.223Z" title="Updated 2021-05-24 11:04:49">2021-05-24</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/paper/">paper</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">732</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>3min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="FedMD: Heterogenous Federated Learning via Model Distillation"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1910.03581.pdf">下载链接</a></p>
+<h2 id="0x00-Abstract">0x00 Abstract</h2>
+<p>Federated learning enables the creation of a powerful centralized model without compromising the data privacy of multiple participants. While successful, it does not incorporate the case where each participant independently designs its own model.</p>
+<p>In this work, we use transfer learning and knowledge distillation to develop a universal framework that enables federated learning when each agent owns not only their private data, but also uniquely designed models.</p>
+<h4 id="Key-Words-Transfer-Learning-Knowledge-Distillation-Model-Heterogeneity-Federated-Learning">Key Words: Transfer Learning,Knowledge Distillation,Model Heterogeneity,Federated Learning</h4>
+<span id="more"></span>
+<h2 id="0x01-Introduction">0x01 Introduction</h2>
+<blockquote>
+<p>There is <strong>system heterogeneity</strong> when each participant has a different amount of bandwidth and computational power; this was partly resolved by the native asynchronous scheme of federated learning, which was further refined e.g. to enable active sampling and improve fault tolerance .</p>
+<p>There is also <strong>statistical heterogneity</strong> (the non IID problem) where clients have a varying amount of data coming from distinct distributions.</p>
+<p>We focus on a different type of heterogeneity: <strong>the differences of local models.</strong><br>
+In this work, we instead explore extensions to the federated framework that is realistic in a <strong>business facing setting</strong>, where each participant has <strong>capacity</strong> and desire to design their own unique model. This arise in areas like health care, finance, supply chain and AI services.</p>
+</blockquote>
+<p>Application scenarios：Federated Learning for Business（High-performance computer）</p>
+<p>Main Methodology：</p>
+<ul>
+<li>
+<p>Knowledge distillation：</p>
+<blockquote>
+<p>There must be a translation protocol enabling a deep network to understand the knowledge of others without sharing data or model architecture.</p>
+</blockquote>
+</li>
+<li>
+<p>Transfer learning：</p>
+<blockquote>
+<ul>
+<li>First, before entering the collaboration, each model is fully trained first on the public data and then on its own private data.</li>
+<li>Second, and more importantly, the blackbox models communicate based on their output class scores on samples from the public dataset.</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<p>Contributions：</p>
+<ul>
+<li>FedMD,a new federated learning frame- work that enables participants to independently design their models.</li>
+<li>Centralized server does not control the architecture of these models and only requires limited black box access.</li>
+<li>A key element for translating knowledge between participants.</li>
+<li>We implement such a communication protocol by leveraging the power of transfer learning and knowledge distillation.</li>
+</ul>
+<h2 id="0x02-Methods">0x02 Methods</h2>
+<h3 id="Problem-definition">Problem definition</h3>
+<ul>
+<li>
+<p>小规模隐私数据集<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="script">D</mi><mi mathvariant="script">k</mi></msub></mrow><annotation encoding="application/x-tex">\mathcal{D_k}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord"><span class="mord mathcal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span>,大规模共享数据集<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="script">D</mi><mn mathvariant="script">0</mn></msub></mrow><annotation encoding="application/x-tex">\mathcal{D_0}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord"><span class="mord mathcal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+</li>
+<li>
+<p>每个参与训练节点自定义模型<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">f_k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>,模型架构可以不同，超参不共享</p>
+</li>
+<li>
+<p>目标：与其他节点聚合后的模型比只用<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="script">D</mi><mi mathvariant="script">k</mi></msub><mo separator="true">,</mo><msub><mi mathvariant="script">D</mi><mn mathvariant="script">0</mn></msub></mrow><annotation encoding="application/x-tex">\mathcal{D_k,D_0}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord"><span class="mord mathcal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathcal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span>训练的模型性能好即可。</p>
+<blockquote>
+<p>目标的就是说明联邦还是有作用的就行。。。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="FedMD-Algorithm">FedMD Algorithm</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/20210507215106.png" alt=""></p>
+<p>Transfer Learning：利用<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="script">D</mi><mn mathvariant="script">0</mn></msub></mrow><annotation encoding="application/x-tex">\mathcal{D_0}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord"><span class="mord mathcal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span>训练至收敛的模型<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">f_k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>,在<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="script">D</mi><mi mathvariant="script">k</mi></msub></mrow><annotation encoding="application/x-tex">\mathcal{D_k}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord"><span class="mord mathcal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span>上面接着训练。</p>
+<p>Communication：防止过大的通信开销，每次获得<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>k</mi></msub><mo stretchy="false">(</mo><msubsup><mi>x</mi><mi>i</mi><mn>0</mn></msubsup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f_k(x_i^0)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.072772em;vertical-align:-0.258664em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-2.441336em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.258664em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>只用<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="script">D</mi><mn mathvariant="script">0</mn></msub></mrow><annotation encoding="application/x-tex">\mathcal{D_0}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord"><span class="mord mathcal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span>的部分数据。</p>
+<blockquote>
+<p>Q&amp;A：</p>
+<ul>
+<li>
+<p>class score是什么？从后续方法看，应该是<code>logits</code></p>
+</li>
+<li>
+<p>怎么训练逼近？<code>Knowledge Distillation</code></p>
+</li>
+</ul>
+</blockquote>
+<h2 id="0x03-Results">0x03 Results</h2>
+<ul>
+<li>
+<p>数据集：</p>
+<ul>
+<li>In the first environment, the public data is the MNIST and the private data is a subset of the FEMNIST.</li>
+<li>In the second environment, the public dataset is the CIFAR10 and the private dataset is a subset of the CIFAR100, which has 100 subclasses that falls under 20 superclasses,e.g. bear, leopard, lion, tiger and wolf belongs to large carnivores.</li>
+</ul>
+</li>
+<li>
+<p>Non/IID</p>
+<ul>
+<li>We consider the IID case where each private dataset is drawn randomly from FEMNIST, as well as the non-IID case where each participant, while only given letters written by a single writer during training, is asked to classify letters by all writers at test time.</li>
+<li>In the IID case, the task is for each participant to classify test images into correct subclasses. The non-IID case is more challenging: during training, each participant has data from one subclass per superclass; at test time, participants need to classify generic test data into the correct superclasses.</li>
+</ul>
+</li>
+<li>
+<p>节点数量：<code>10</code></p>
+</li>
+<li>
+<p>网络模型：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/20210507220824.png" alt=""></p>
+</li>
+<li>
+<p>优化器：<code>Adam</code>，学习率 <code>0.001</code></p>
+</li>
+<li>
+<p>打分样本：<code>5000</code>（这个属实有点大）</p>
+</li>
+<li>
+<p>结果如下：</p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/20210507221143.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/20210507221629.png" alt=""></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Low Bee</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://lowbee.fun/2021/05/07/Paper-16/">http://lowbee.fun/2021/05/07/Paper-16/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Federated-Learning/">Federated Learning</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/20210507214233.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> Donate</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/05/09/Paper-17/"><img class="prev-cover" src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/20210509202048.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">When Edge Meets Learning: Adaptive Control for Resource-Constrained Distributed Machine Learning</div></div></a></div><div class="next-post pull-right"><a href="/2021/04/29/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C--tensorflow/"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/default.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">神经网络--tensorflow</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2020/09/23/Federated-Learning/" title="What is Federated Learning?"><img class="cover" src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/20210425200325.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-09-23</div><div class="title">What is Federated Learning?</div></div></a></div><div><a href="/2021/01/21/Paper-10/" title="Communication-Efficient On-Device Machine Learning: Federated Distillation and Augmentation under Non-IID Private Data"><img class="cover" src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/default.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-01-21</div><div class="title">Communication-Efficient On-Device Machine Learning: Federated Distillation and Augmentation under Non-IID Private Data</div></div></a></div><div><a href="/2021/03/30/Paper-12/" title="Heterogeneous Federated Learning"><img class="cover" src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/default.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-30</div><div class="title">Heterogeneous Federated Learning</div></div></a></div><div><a href="/2021/04/12/Paper-13/" title="Federated Learning with Non-IID Data"><img class="cover" src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/default.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-12</div><div class="title">Federated Learning with Non-IID Data</div></div></a></div><div><a href="/2021/04/22/Paper-14/" title="Game of Gradients: Mitigating Irrelevant clients in Federated Learning"><img class="cover" src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/20210422214408.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-22</div><div class="title">Game of Gradients: Mitigating Irrelevant clients in Federated Learning</div></div></a></div><div><a href="/2021/04/25/Paper-15/" title="Multi-Center Federated Learning"><img class="cover" src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/20210425212101.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-25</div><div class="title">Multi-Center Federated Learning</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/头像.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Low Bee</div><div class="author-info__description">科研废物</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">70</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">40</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">8</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lowbee2019"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/lowbee2019" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:lowbee@vip.qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">社会主义接班人！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x00-Abstract"><span class="toc-number">1.</span> <span class="toc-text">0x00 Abstract</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Key-Words-Transfer-Learning-Knowledge-Distillation-Model-Heterogeneity-Federated-Learning"><span class="toc-number">1.0.1.</span> <span class="toc-text">Key Words: Transfer Learning,Knowledge Distillation,Model Heterogeneity,Federated Learning</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-Introduction"><span class="toc-number">2.</span> <span class="toc-text">0x01 Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-Methods"><span class="toc-number">3.</span> <span class="toc-text">0x02 Methods</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Problem-definition"><span class="toc-number">3.1.</span> <span class="toc-text">Problem definition</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FedMD-Algorithm"><span class="toc-number">3.2.</span> <span class="toc-text">FedMD Algorithm</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-Results"><span class="toc-number">4.</span> <span class="toc-text">0x03 Results</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/12/20/Paper-33/" title="ClusterGAN: Latent Space Clustering in Generative Adversarial Networks"><img src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/default.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ClusterGAN: Latent Space Clustering in Generative Adversarial Networks"/></a><div class="content"><a class="title" href="/2021/12/20/Paper-33/" title="ClusterGAN: Latent Space Clustering in Generative Adversarial Networks">ClusterGAN: Latent Space Clustering in Generative Adversarial Networks</a><time datetime="2021-12-20T02:47:34.000Z" title="Created 2021-12-20 10:47:34">2021-12-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/26/Reinforcement-Learning-ZouWei-3/" title="Reinforcement Learning ZouWei(III)"><img src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/f5d6603125a166875ed1666ca908e45b.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Reinforcement Learning ZouWei(III)"/></a><div class="content"><a class="title" href="/2021/11/26/Reinforcement-Learning-ZouWei-3/" title="Reinforcement Learning ZouWei(III)">Reinforcement Learning ZouWei(III)</a><time datetime="2021-11-26T01:26:30.000Z" title="Created 2021-11-26 09:26:30">2021-11-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/25/Reinforcement-Learning-ZouWei-2/" title="Reinforcement Learning ZouWei(II)"><img src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/f5d6603125a166875ed1666ca908e45b.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Reinforcement Learning ZouWei(II)"/></a><div class="content"><a class="title" href="/2021/11/25/Reinforcement-Learning-ZouWei-2/" title="Reinforcement Learning ZouWei(II)">Reinforcement Learning ZouWei(II)</a><time datetime="2021-11-25T11:24:14.000Z" title="Created 2021-11-25 19:24:14">2021-11-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/22/Reinforcement-Learning-ZouWei-1/" title="Reinforcement Learning ZouWei(I)"><img src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/f5d6603125a166875ed1666ca908e45b.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Reinforcement Learning ZouWei(I)"/></a><div class="content"><a class="title" href="/2021/11/22/Reinforcement-Learning-ZouWei-1/" title="Reinforcement Learning ZouWei(I)">Reinforcement Learning ZouWei(I)</a><time datetime="2021-11-22T13:46:09.000Z" title="Created 2021-11-22 21:46:09">2021-11-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/06/17/Paper-32/" title="Federated Evaluation of On-device Personalization"><img src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/default.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Federated Evaluation of On-device Personalization"/></a><div class="content"><a class="title" href="/2021/06/17/Paper-32/" title="Federated Evaluation of On-device Personalization">Federated Evaluation of On-device Personalization</a><time datetime="2021-06-17T13:07:02.000Z" title="Created 2021-06-17 21:07:02">2021-06-17</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/20210507214233.png')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Low Bee</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">Local search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.css"><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', '', 'katex-wrap')
+  })
+})()</script></div><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-show-text.min.js" data-mobile="true" data-text="富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="true" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"./live2d_models/haruna/22/model.2017.school.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body></html>

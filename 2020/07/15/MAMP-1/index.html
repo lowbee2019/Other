@@ -1,0 +1,607 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MAMP-1 | LowBee's Blog</title><meta name="keywords" content="PHP"><meta name="author" content="Low Bee"><meta name="copyright" content="Low Bee"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="书籍：《PHP、MySQL与JavaScript学习手册》第四版">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MAMP-1">
+<meta property="og:url" content="http://lowbee.fun/2020/07/15/MAMP-1/index.html">
+<meta property="og:site_name" content="LowBee&#39;s Blog">
+<meta property="og:description" content="书籍：《PHP、MySQL与JavaScript学习手册》第四版">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/default.png">
+<meta property="article:published_time" content="2020-07-15T01:30:49.000Z">
+<meta property="article:modified_time" content="2020-07-16T13:18:03.406Z">
+<meta property="article:author" content="Low Bee">
+<meta property="article:tag" content="PHP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/default.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://lowbee.fun/2020/07/15/MAMP-1/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-197495331-1"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'UA-197495331-1');
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2020-07-16 21:18:03'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/头像.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">70</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">40</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">8</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/default.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">LowBee's Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">MAMP-1</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2020-07-15T01:30:49.000Z" title="Created 2020-07-15 09:30:49">2020-07-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2020-07-16T13:18:03.406Z" title="Updated 2020-07-16 21:18:03">2020-07-16</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Web/">Web</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">4.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>19min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="MAMP-1"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>书籍：《PHP、MySQL与JavaScript学习手册》第四版</p>
+<span id="more"></span>
+<p>开始于第三章(๑•̀ㅂ•́)و✧</p>
+<h2 id="0x01-关于PHP">0x01 关于PHP</h2>
+<ul>
+<li>
+<p>标记符:以下两种均可以；但后者与XML不兼容，不提倡。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	<span class="keyword">echo</span> <span class="string">&quot;Hello world&quot;</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?</span></span><br><span class="line">	<span class="keyword">echo</span> <span class="string">&quot;Hello world&quot;</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>注释:多行注释不能嵌套。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	<span class="comment">//This is a comment</span></span><br><span class="line">	<span class="keyword">echo</span> <span class="string">&quot;COMMENT&quot;</span>;</span><br><span class="line">	<span class="comment">/* </span></span><br><span class="line"><span class="comment">	This</span></span><br><span class="line"><span class="comment">	is</span></span><br><span class="line"><span class="comment">	a</span></span><br><span class="line"><span class="comment">	comment */</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>PHP是由C和Perl发展而来的，多类比C，有助于学习。</p>
+</li>
+<li>
+<p>变量名大小写敏感。</p>
+</li>
+<li>
+<p><code>.</code>运算符是连接</p>
+</li>
+<li>
+<p>逻辑运算符</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&amp;&amp;</td>
+<td>与</td>
+</tr>
+<tr>
+<td>and</td>
+<td>低优先级与</td>
+</tr>
+<tr>
+<td>||</td>
+<td>或</td>
+</tr>
+<tr>
+<td>or</td>
+<td>低优先级或</td>
+</tr>
+<tr>
+<td>！</td>
+<td>非</td>
+</tr>
+<tr>
+<td>xor</td>
+<td>异或</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>自增自减运算和C语言相同。</p>
+</li>
+<li>
+<p>字符串：单引号是直接输出，也无法实现转义的功能。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="variable">$j</span> = <span class="number">13</span>;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&#x27;This is $j&#x27;</span>;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;This is <span class="subst">$j</span>&quot;</span>; <span class="comment">//双引号替换变量值</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>多行字符串输出或赋值</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="variable">$author</span> = <span class="string">&quot;Bill Gates&quot;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="variable">$text</span> = <span class="string">&quot;Measuring programming progress by lines of code is like</span></span><br><span class="line"><span class="string">  Measuring aircraft building progress by weight.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  - <span class="subst">$author</span>.&quot;</span>;</span><br><span class="line">	</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="variable">$author</span> = <span class="string">&quot;Brian W. Kernighan&quot;</span>;</span><br><span class="line">	<span class="comment">//标签可以自己指定，但开始和结束相同，例如：_Start、Start等</span></span><br><span class="line">	<span class="comment">//开始标签后续不能添加其他信息</span></span><br><span class="line">  <span class="keyword">echo</span> &lt;&lt;&lt;_END</span><br><span class="line">  Debugging is twice <span class="keyword">as</span> hard <span class="keyword">as</span> writing the code in the first place.</span><br><span class="line">  Therefore, <span class="keyword">if</span> you write the code <span class="keyword">as</span> cleverly <span class="keyword">as</span> possible, you are,</span><br><span class="line">  by definition, not smart enough to debug it.</span><br><span class="line">  </span><br><span class="line">  - <span class="variable">$author</span>.</span><br><span class="line">_END;</span><br><span class="line"><span class="comment">//关闭的_END 标签必须单独一行</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>弱语言类型</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="variable">$number</span> = <span class="number">1234</span>*<span class="number">567</span>;</span><br><span class="line">  <span class="keyword">echo</span> substr(<span class="variable">$number</span>,<span class="number">3</span>,<span class="number">1</span>);</span><br><span class="line">  <span class="keyword">echo</span> <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">  <span class="variable">$pi</span>     = <span class="string">&quot;3.1415927&quot;</span>;</span><br><span class="line">  <span class="variable">$radius</span> = <span class="number">5</span>;</span><br><span class="line">  <span class="keyword">echo</span> <span class="variable">$pi</span> * (<span class="variable">$radius</span> * <span class="variable">$radius</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lowbee 3 $php example3-11.php</span><br><span class="line">6</span><br><span class="line">78.5398175                                                              </span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>常量</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	define(<span class="string">&quot;ROOT_LOCATION&quot;</span>,<span class="string">&quot;/usr/local/www/&quot;</span>);<span class="comment">//define 定义</span></span><br><span class="line">	<span class="variable">$directory</span> = ROOT_LOCATION; <span class="comment">//使用常量不需要$</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>echo &amp; print</p>
+<blockquote>
+<p>两者均是PHP的结构，不需要使用括号。</p>
+<p>echo：多个参数、不是函数，没有返回值，运行更快一些，不能作为复杂表达式的一部分</p>
+<p>print：一个参数、返回值是1，能作为复杂表达式的一部分</p>
+</blockquote>
+</li>
+<li>
+<p>变量作用域</p>
+<table>
+<thead>
+<tr>
+<th>全局变量</th>
+<th>静态变量</th>
+<th>超级全局变量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>所有函数都可以使用的变量</td>
+<td>函数内部多次使用的，变量值和调用次数有关的</td>
+<td>预定义变量，包含程序的信息和环境等</td>
+</tr>
+<tr>
+<td>global $logged_in;</td>
+<td>function test(){<br /> static $count = 0;<br /> …<br />}</td>
+<td>$GLOBALS :全部的全局变量<br />$_GET:GET方式获取的变量<br />$_POST:POST方法获取的变量<br />$_COOKIE:会话变量<br />…</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><code>htmlentities</code>函数对用户传入的参数消毒==&gt;将所有的字符转成html实体，例：<code>&lt;</code> ==&gt; <code>&amp;lt</code></p>
+</li>
+</ul>
+<h2 id="0x02-PHP中的表达式和控制流">0x02 PHP中的表达式和控制流</h2>
+<ul>
+<li>
+<p>TRUE和FALSE是PHP中预定义的变量，可以用小写，而且小写更稳定，不允许被重新定义。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="keyword">echo</span> <span class="string">&quot;a: [&quot;</span> . (<span class="number">20</span> &gt; <span class="number">9</span>) . <span class="string">&quot;]&lt;br&gt;&quot;</span>;</span><br><span class="line">  <span class="keyword">echo</span> <span class="string">&quot;b: [&quot;</span> . (<span class="number">5</span> == <span class="number">6</span>) . <span class="string">&quot;]&lt;br&gt;&quot;</span>;</span><br><span class="line">  <span class="keyword">echo</span> <span class="string">&quot;c: [&quot;</span> . (<span class="number">1</span> == <span class="number">0</span>) . <span class="string">&quot;]&lt;br&gt;&quot;</span>;</span><br><span class="line">  <span class="keyword">echo</span> <span class="string">&quot;d: [&quot;</span> . (<span class="number">1</span> == <span class="number">1</span>) . <span class="string">&quot;]&lt;br&gt;&quot;</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>结果如下：在PHP中FALSE被定义为NULL</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lowbee 4 $php example4-1.php </span><br><span class="line">a: [1]&lt;br&gt;b: []&lt;br&gt;c: []&lt;br&gt;d: [1]&lt;br&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>多重赋值语句</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	<span class="variable">$a</span> = <span class="variable">$b</span> = <span class="variable">$c</span> =<span class="number">0</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>一致性运算符 <code>===</code>会阻止PHP进行自动的类型转换。</p>
+</li>
+<li>
+<p>条件语句</p>
+<ul>
+<li>
+<p>if…elseif…else</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="variable">$bank_balance</span> &lt; <span class="number">100</span>)</span><br><span class="line">  &#123;</span><br><span class="line">  	<span class="variable">$money</span>         = <span class="number">1000</span>;</span><br><span class="line">  	<span class="variable">$bank_balance</span> += <span class="variable">$money</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">elseif</span> (<span class="variable">$bank_balance</span> &gt; <span class="number">200</span>)</span><br><span class="line">  &#123;</span><br><span class="line">  	<span class="variable">$savings</span>      += <span class="number">100</span>;</span><br><span class="line">  	<span class="variable">$bank_balance</span> -= <span class="number">100</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">  &#123;</span><br><span class="line">  	<span class="variable">$savings</span>      += <span class="number">50</span>;</span><br><span class="line">  	<span class="variable">$bank_balance</span> -= <span class="number">50</span>;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>switch…case</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">switch</span> (<span class="variable">$page</span>)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">case</span> <span class="string">&quot;Home&quot;</span>:</span><br><span class="line">	    <span class="keyword">echo</span> <span class="string">&quot;You selected Home&quot;</span>;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="string">&quot;About&quot;</span>:</span><br><span class="line">	    <span class="keyword">echo</span> <span class="string">&quot;You selected About&quot;</span>;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="string">&quot;News&quot;</span>:</span><br><span class="line">	    <span class="keyword">echo</span> <span class="string">&quot;You selected News&quot;</span>;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="string">&quot;Login&quot;</span>:</span><br><span class="line">	    <span class="keyword">echo</span> <span class="string">&quot;You selected Login&quot;</span>;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="string">&quot;Links&quot;</span>:</span><br><span class="line">	    <span class="keyword">echo</span> <span class="string">&quot;You selected Links&quot;</span>;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">default</span>:</span><br><span class="line">	    <span class="keyword">echo</span> <span class="string">&quot;Unrecognized selection&quot;</span>;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="keyword">switch</span> (<span class="variable">$page</span>):</span><br><span class="line">  	<span class="keyword">case</span> <span class="string">&quot;Home&quot;</span>:</span><br><span class="line">  		<span class="keyword">echo</span> <span class="string">&quot;You selected Home&quot;</span>;</span><br><span class="line">  		<span class="keyword">break</span>;</span><br><span class="line">  </span><br><span class="line">  	<span class="comment">// etc...</span></span><br><span class="line">  </span><br><span class="line">  	<span class="keyword">case</span> <span class="string">&quot;Links&quot;</span>:</span><br><span class="line">  		<span class="keyword">echo</span> <span class="string">&quot;You selected Links&quot;</span>;</span><br><span class="line">  		<span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">endswitch</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>三目运算符：<code>? :</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="keyword">echo</span> <span class="variable">$fuel</span> &lt;= <span class="number">1</span> ? <span class="string">&quot;Fill tank now&quot;</span> : <span class="string">&quot;There&#x27;s enough fuel&quot;</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li>
+<p>循环</p>
+<ul>
+<li>
+<p>while</p>
+</li>
+<li>
+<p>do…while</p>
+</li>
+<li>
+<p>for</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="variable">$fp</span> = fopen(<span class="string">&quot;text.txt&quot;</span>, <span class="string">&#x27;wb&#x27;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="variable">$j</span> = <span class="number">0</span> ; <span class="variable">$j</span> &lt; <span class="number">100</span> ; ++<span class="variable">$j</span>)</span><br><span class="line">  &#123;</span><br><span class="line">	<span class="variable">$written</span> = fwrite(<span class="variable">$fp</span>, <span class="string">&quot;data&quot;</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (<span class="variable">$written</span> == <span class="literal">FALSE</span>) <span class="keyword">break</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  fclose(<span class="variable">$fp</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>break跳出循环：也可以自己指定跳出多少层循环，如<code>break 2；</code>跳出两层循环。</p>
+</li>
+<li>
+<p>continue：结束当前一次循环。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="0x03-PHP函数与对象">0x03 PHP函数与对象</h2>
+<ul>
+<li>
+<p><code>phpinfo()</code></p>
+</li>
+<li>
+<p>三个字符串函数</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="keyword">echo</span> strrev(<span class="string">&quot; .dlrow olleH&quot;</span>); <span class="comment">// Reverse string</span></span><br><span class="line">  <span class="keyword">echo</span> str_repeat(<span class="string">&quot;Hip &quot;</span>, <span class="number">2</span>);   <span class="comment">// Repeat string</span></span><br><span class="line">  <span class="keyword">echo</span> strtoupper(<span class="string">&quot;hooray!&quot;</span>);   <span class="comment">// String to upper case</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>函数名大小写不敏感，但变量名敏感。</p>
+</li>
+<li>
+<p>函数被定义前调用</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="variable">$a1</span> = <span class="string">&quot;WILLIAM&quot;</span>;</span><br><span class="line">  <span class="variable">$a2</span> = <span class="string">&quot;henry&quot;</span>;</span><br><span class="line">  <span class="variable">$a3</span> = <span class="string">&quot;gatES&quot;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">echo</span> <span class="variable">$a1</span> . <span class="string">&quot; &quot;</span> . <span class="variable">$a2</span> . <span class="string">&quot; &quot;</span> . <span class="variable">$a3</span> . <span class="string">&quot;&lt;br&gt;&quot;</span>;</span><br><span class="line">  fix_names();</span><br><span class="line">  <span class="keyword">echo</span> <span class="variable">$a1</span> . <span class="string">&quot; &quot;</span> . <span class="variable">$a2</span> . <span class="string">&quot; &quot;</span> . <span class="variable">$a3</span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">fix_names</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">    <span class="keyword">global</span> <span class="variable">$a1</span>; <span class="variable">$a1</span> = ucfirst(strtolower(<span class="variable">$a1</span>));</span><br><span class="line">    <span class="keyword">global</span> <span class="variable">$a2</span>; <span class="variable">$a2</span> = ucfirst(strtolower(<span class="variable">$a2</span>));</span><br><span class="line">    <span class="keyword">global</span> <span class="variable">$a3</span>; <span class="variable">$a3</span> = ucfirst(strtolower(<span class="variable">$a3</span>));</span><br><span class="line">  &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>首先PHP不是单纯的按照行来边du解释边执行的，而是先由Zend引擎翻译PHP代码到zhiZend二进制操作码，然后dao再去执行操作码。对于function的位置，因为函数的作用域是全局的，所以只要定义了，那么就可以在任意位置去调用它。但是除了两种情况，函数必须在其调用之前定义，一是在条件语句中定义的函数，二是在函数中定义的函数。</p>
+<p>详见：<a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/functions.user-defined.php">https://www.php.net/manual/zh/functions.user-defined.php</a></p>
+</blockquote>
+</li>
+<li>
+<p><strong>PHP 5.4之后不再支持传参时传引用</strong></p>
+</li>
+<li>
+<p>包含和请求文件</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>include</td>
+<td>将文件试图导入，即便文件没有被找到，程序继续执行、不会报错。遇到一次，导入一次，会导致文件包含的嵌套问题，即：a包含b、c，b包含c。</td>
+</tr>
+<tr>
+<td>include_once</td>
+<td>也是将文件试图导入。但导入前会检查文件是否被包含，若包含、跳过此命令。<strong>推荐使用。</strong></td>
+</tr>
+<tr>
+<td>require</td>
+<td>强制文件导入，导入失败程序会停止执行、并报错。遇到一次，请求包含一次。</td>
+</tr>
+<tr>
+<td>require_once</td>
+<td>同include_once，会检查文件是否已经被包含。<strong>推荐使用。</strong></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>版本兼容问题：查看函数是否存在</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="keyword">if</span> (function_exists(<span class="string">&quot;array_combine&quot;</span>))</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;Function exists&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;Function does not exist - better write our own&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>类定义包括类名(大小写敏感)、属性及方法。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="variable">$object</span> = <span class="keyword">new</span> User;</span><br><span class="line">  print_r(<span class="variable">$object</span>); <span class="comment">//_r代表按照常规阅读规格</span></span><br><span class="line"></span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">User</span></span></span><br><span class="line"><span class="class">  </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$name</span>, <span class="variable">$password</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">save_user</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">  	  <span class="keyword">echo</span> <span class="string">&quot;Save User code goes here&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>结果：命令行结果如下，浏览器输出会忽略所有空格。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">User <span class="keyword">Object</span></span><br><span class="line">(</span><br><span class="line">    [name] =&gt; </span><br><span class="line">    [password] =&gt; </span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>对象克隆</p>
+<ul>
+<li>以下是错误用例，$object1 与$object2均指向同一对象，并未实现对象复制。</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="variable">$object1</span> = <span class="keyword">new</span> User();</span><br><span class="line">  <span class="variable">$object1</span>-&gt;name = <span class="string">&quot;Alice&quot;</span>;</span><br><span class="line">  <span class="variable">$object2</span> = <span class="variable">$object1</span>;</span><br><span class="line">  <span class="variable">$object2</span>-&gt;name = <span class="string">&quot;Amy&quot;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">echo</span> <span class="string">&quot;object1 name = &quot;</span> . <span class="variable">$object1</span>-&gt;name . <span class="string">&quot;&lt;br&gt;&quot;</span>;</span><br><span class="line">  <span class="keyword">echo</span> <span class="string">&quot;object2 name = &quot;</span> . <span class="variable">$object2</span>-&gt;name;</span><br><span class="line">  </span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">User</span></span></span><br><span class="line"><span class="class">  </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$name</span>;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>以下是正确姿势：</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="variable">$object1</span> = <span class="keyword">new</span> User();</span><br><span class="line">  <span class="variable">$object1</span>-&gt;name = <span class="string">&quot;Alice&quot;</span>;</span><br><span class="line">  <span class="variable">$object2</span> = <span class="keyword">clone</span> <span class="variable">$object1</span>; <span class="comment">//====&gt; 克隆对象</span></span><br><span class="line">  <span class="variable">$object2</span>-&gt;name = <span class="string">&quot;Amy&quot;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">echo</span> <span class="string">&quot;object1 name = &quot;</span> . <span class="variable">$object1</span>-&gt;name . <span class="string">&quot;&lt;br&gt;&quot;</span>;</span><br><span class="line">  <span class="keyword">echo</span> <span class="string">&quot;object2 name = &quot;</span> . <span class="variable">$object2</span>-&gt;name;</span><br><span class="line">  </span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">User</span></span></span><br><span class="line"><span class="class">  </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$name</span>;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>构造方法：方法1==&gt;方法2</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="comment">//方法1</span></span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">User</span></span></span><br><span class="line"><span class="class">  </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">User</span>(<span class="params"><span class="variable">$param1</span>, <span class="variable">$param2</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">      <span class="comment">// Constructor statements go here</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="comment">//方法2</span></span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">User</span></span></span><br><span class="line"><span class="class">  </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"><span class="variable">$param1</span>, <span class="variable">$param2</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">      <span class="comment">// Constructor statements go here</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>PHP5 析构方法</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">User</span></span></span><br><span class="line"><span class="class">  </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">      <span class="comment">// Destructor code goes here</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>类的静态方法</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  User::pwd_string();</span><br><span class="line"></span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">User</span></span></span><br><span class="line"><span class="class">  </span>&#123;</span><br><span class="line">    <span class="built_in">static</span> <span class="function"><span class="keyword">function</span> <span class="title">pwd_string</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">      <span class="keyword">echo</span> <span class="string">&quot;Please enter your password&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>类中不必直接(显示)声明属性，<strong>但不提倡</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="variable">$object1</span> = <span class="keyword">new</span> User();</span><br><span class="line">  <span class="variable">$object1</span>-&gt;name = <span class="string">&quot;Alice&quot;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">echo</span> <span class="variable">$object1</span>-&gt;name;</span><br><span class="line"></span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>声明常量</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  Translate::lookup();</span><br><span class="line">  </span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">Translate</span></span></span><br><span class="line"><span class="class">  </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> ENGLISH = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">const</span> SPANISH = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">const</span> FRENCH  = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">const</span> GERMAN  = <span class="number">3</span>;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">static</span> <span class="function"><span class="keyword">function</span> <span class="title">lookup</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">      <span class="keyword">echo</span> <span class="built_in">self</span>::SPANISH;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>对象不能直接访问静态属性或常量</p>
+</li>
+<li>
+<p>继承</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="variable">$object</span>           = <span class="keyword">new</span> Subscriber;</span><br><span class="line">  <span class="variable">$object</span>-&gt;name     = <span class="string">&quot;Fred&quot;</span>;</span><br><span class="line">  <span class="variable">$object</span>-&gt;password = <span class="string">&quot;pword&quot;</span>;</span><br><span class="line">  <span class="variable">$object</span>-&gt;phone    = <span class="string">&quot;012 345 6789&quot;</span>;</span><br><span class="line">  <span class="variable">$object</span>-&gt;email    = <span class="string">&quot;fred@bloggs.com&quot;</span>;</span><br><span class="line">  <span class="variable">$object</span>-&gt;display();</span><br><span class="line"></span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">User</span></span></span><br><span class="line"><span class="class">  </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$name</span>, <span class="variable">$password</span>;</span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">save_user</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">      <span class="keyword">echo</span> <span class="string">&quot;Save User code goes here&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">Subscriber</span> <span class="keyword">extends</span> <span class="title">User</span> //===&gt;继承</span></span><br><span class="line"><span class="class">  </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$phone</span>, <span class="variable">$email</span>;</span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">display</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">      <span class="keyword">echo</span> <span class="string">&quot;Name:  &quot;</span> . <span class="keyword">$this</span>-&gt;name     . <span class="string">&quot;&lt;br&gt;&quot;</span>;</span><br><span class="line">      <span class="keyword">echo</span> <span class="string">&quot;Pass:  &quot;</span> . <span class="keyword">$this</span>-&gt;password . <span class="string">&quot;&lt;br&gt;&quot;</span>;</span><br><span class="line">      <span class="keyword">echo</span> <span class="string">&quot;Phone: &quot;</span> . <span class="keyword">$this</span>-&gt;phone    . <span class="string">&quot;&lt;br&gt;&quot;</span>;</span><br><span class="line">      <span class="keyword">echo</span> <span class="string">&quot;Email: &quot;</span> . <span class="keyword">$this</span>-&gt;email;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>parent运算符</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="variable">$object</span> = <span class="keyword">new</span> Son;</span><br><span class="line">  <span class="variable">$object</span>-&gt;test();</span><br><span class="line">  <span class="variable">$object</span>-&gt;test2();</span><br><span class="line"></span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">Dad</span></span></span><br><span class="line"><span class="class">  </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">      <span class="keyword">echo</span> <span class="string">&quot;[Class Dad] I am your Father&lt;br&gt;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span> <span class="title">Dad</span></span></span><br><span class="line"><span class="class">  </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">      <span class="keyword">echo</span> <span class="string">&quot;[Class Son] I am Luke&lt;br&gt;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  	</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">test2</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">      <span class="built_in">parent</span>::test();</span><br><span class="line">      <span class="comment">//若指明当前类的方法，可以使用 self::method(),即self::test()</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>Final方法：防止子类方法覆盖父类方法</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">User</span></span></span><br><span class="line"><span class="class">	</span>&#123;</span><br><span class="line">		<span class="keyword">final</span> <span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">		</span>&#123;</span><br><span class="line">			<span class="keyword">echo</span> <span class="string">&quot;This is hello of son, not dad.&quot;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="0x04-PHP的数组">0x04 PHP的数组</h2>
+<h4 id="1-数值数组">1.数值数组</h4>
+<p>不推荐方法1，难以维护数组，推荐使用方法2。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="comment">//方法1</span></span><br><span class="line">  <span class="variable">$paper</span>[] = <span class="string">&quot;Copier&quot;</span>;</span><br><span class="line">  <span class="variable">$paper</span>[] = <span class="string">&quot;Inkjet&quot;</span>;</span><br><span class="line">  <span class="variable">$paper</span>[] = <span class="string">&quot;Laser&quot;</span>;</span><br><span class="line">  <span class="variable">$paper</span>[] = <span class="string">&quot;Photo&quot;</span>;</span><br><span class="line"></span><br><span class="line">  print_r(<span class="variable">$paper</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="comment">//方法2</span></span><br><span class="line">  <span class="variable">$paper</span>[<span class="number">0</span>] = <span class="string">&quot;Copier&quot;</span>;</span><br><span class="line">  <span class="variable">$paper</span>[<span class="number">1</span>] = <span class="string">&quot;Inkjet&quot;</span>;</span><br><span class="line">  <span class="variable">$paper</span>[<span class="number">2</span>] = <span class="string">&quot;Laser&quot;</span>;</span><br><span class="line">  <span class="variable">$paper</span>[<span class="number">3</span>] = <span class="string">&quot;Photo&quot;</span>;</span><br><span class="line"></span><br><span class="line">  print_r(<span class="variable">$paper</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-关联数组">2.关联数组</h4>
+<p>通俗易懂，就是Python的字典。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="variable">$p1</span> = <span class="keyword">array</span>(<span class="string">&quot;Copier&quot;</span>, <span class="string">&quot;Inkjet&quot;</span>, <span class="string">&quot;Laser&quot;</span>, <span class="string">&quot;Photo&quot;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">echo</span> <span class="string">&quot;p1 element: &quot;</span> . <span class="variable">$p1</span>[<span class="number">2</span>] . <span class="string">&quot;&lt;br&gt;&quot;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="variable">$p2</span> = <span class="keyword">array</span>(<span class="string">&#x27;copier&#x27;</span> =&gt; <span class="string">&quot;Copier &amp; Multipurpose&quot;</span>,</span><br><span class="line">              <span class="string">&#x27;inkjet&#x27;</span> =&gt; <span class="string">&quot;Inkjet Printer&quot;</span>,</span><br><span class="line">              <span class="string">&#x27;laser&#x27;</span>  =&gt; <span class="string">&quot;Laser Printer&quot;</span>,</span><br><span class="line">              <span class="string">&#x27;photo&#x27;</span>  =&gt; <span class="string">&quot;Photographic Paper&quot;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">echo</span> <span class="string">&quot;p2 element: &quot;</span> . <span class="variable">$p2</span>[<span class="string">&#x27;inkjet&#x27;</span>] . <span class="string">&quot;&lt;br&gt;&quot;</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lowbee 6 $php example6-5.php </span><br><span class="line">p1 element: Laser&lt;br&gt;p2 element: Inkjet Printer&lt;br&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>循环遍历数组：foreach…as</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="variable">$paper</span> = <span class="keyword">array</span>(<span class="string">&quot;Copier&quot;</span>, <span class="string">&quot;Inkjet&quot;</span>, <span class="string">&quot;Laser&quot;</span>, <span class="string">&quot;Photo&quot;</span>);</span><br><span class="line">  <span class="variable">$j</span> = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">foreach</span>(<span class="variable">$paper</span> <span class="keyword">as</span> <span class="variable">$item</span>)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;<span class="subst">$j</span>: <span class="subst">$item</span>&lt;br&gt;&quot;</span>;</span><br><span class="line">    ++<span class="variable">$j</span>;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="variable">$paper</span> = <span class="keyword">array</span>(<span class="string">&#x27;copier&#x27;</span> =&gt; <span class="string">&quot;Copier &amp; Multipurpose&quot;</span>,</span><br><span class="line">                 <span class="string">&#x27;inkjet&#x27;</span> =&gt; <span class="string">&quot;Inkjet Printer&quot;</span>,</span><br><span class="line">                 <span class="string">&#x27;laser&#x27;</span>  =&gt; <span class="string">&quot;Laser Printer&quot;</span>,</span><br><span class="line">                 <span class="string">&#x27;photo&#x27;</span>  =&gt; <span class="string">&quot;Photographic Paper&quot;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">foreach</span>(<span class="variable">$paper</span> <span class="keyword">as</span> <span class="variable">$item</span> =&gt; <span class="variable">$description</span>)</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;<span class="subst">$item</span>: <span class="subst">$description</span>&lt;br&gt;&quot;</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>循环遍历：list()和each()</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="variable">$paper</span> = <span class="keyword">array</span>(<span class="string">&#x27;copier&#x27;</span> =&gt; <span class="string">&quot;Copier &amp; Multipurpose&quot;</span>,</span><br><span class="line">                 <span class="string">&#x27;inkjet&#x27;</span> =&gt; <span class="string">&quot;Inkjet Printer&quot;</span>,</span><br><span class="line">                 <span class="string">&#x27;laser&#x27;</span>  =&gt; <span class="string">&quot;Laser Printer&quot;</span>,</span><br><span class="line">                 <span class="string">&#x27;photo&#x27;</span>  =&gt; <span class="string">&quot;Photographic Paper&quot;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> (<span class="keyword">list</span>(<span class="variable">$item</span>, <span class="variable">$description</span>) = each(<span class="variable">$paper</span>))</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;<span class="subst">$item</span>: <span class="subst">$description</span>&lt;br&gt;&quot;</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="3-多维数组">3.多维数组</h4>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="variable">$products</span> = <span class="keyword">array</span>(</span><br><span class="line"></span><br><span class="line">    <span class="string">&#x27;paper&#x27;</span> =&gt; <span class="keyword">array</span>(</span><br><span class="line"></span><br><span class="line">      <span class="string">&#x27;copier&#x27;</span> =&gt; <span class="string">&quot;Copier &amp; Multipurpose&quot;</span>,</span><br><span class="line">      <span class="string">&#x27;inkjet&#x27;</span> =&gt; <span class="string">&quot;Inkjet Printer&quot;</span>,</span><br><span class="line">      <span class="string">&#x27;laser&#x27;</span>  =&gt; <span class="string">&quot;Laser Printer&quot;</span>,</span><br><span class="line">      <span class="string">&#x27;photo&#x27;</span>  =&gt; <span class="string">&quot;Photographic Paper&quot;</span>),</span><br><span class="line"></span><br><span class="line">    <span class="string">&#x27;pens&#x27;</span> =&gt; <span class="keyword">array</span>(</span><br><span class="line"></span><br><span class="line">      <span class="string">&#x27;ball&#x27;</span>   =&gt; <span class="string">&quot;Ball Point&quot;</span>,</span><br><span class="line">      <span class="string">&#x27;hilite&#x27;</span> =&gt; <span class="string">&quot;Highlighters&quot;</span>,</span><br><span class="line">      <span class="string">&#x27;marker&#x27;</span> =&gt; <span class="string">&quot;Markers&quot;</span>),</span><br><span class="line"></span><br><span class="line">    <span class="string">&#x27;misc&#x27;</span> =&gt; <span class="keyword">array</span>(</span><br><span class="line"></span><br><span class="line">      <span class="string">&#x27;tape&#x27;</span>   =&gt; <span class="string">&quot;Sticky Tape&quot;</span>,</span><br><span class="line">      <span class="string">&#x27;glue&#x27;</span>   =&gt; <span class="string">&quot;Adhesives&quot;</span>,</span><br><span class="line">      <span class="string">&#x27;clips&#x27;</span>  =&gt; <span class="string">&quot;Paperclips&quot;</span></span><br><span class="line">    )</span><br><span class="line">  );</span><br><span class="line"></span><br><span class="line">  <span class="keyword">echo</span> <span class="string">&quot;&lt;pre&gt;&quot;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">foreach</span>(<span class="variable">$products</span> <span class="keyword">as</span> <span class="variable">$section</span> =&gt; <span class="variable">$items</span>)</span><br><span class="line">    <span class="keyword">foreach</span>(<span class="variable">$items</span> <span class="keyword">as</span> <span class="variable">$key</span> =&gt; <span class="variable">$value</span>)</span><br><span class="line">      <span class="keyword">echo</span> <span class="string">&quot;<span class="subst">$section</span>:\t<span class="subst">$key</span>\t(<span class="subst">$value</span>)&lt;br&gt;&quot;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">echo</span> <span class="string">&quot;&lt;/pre&gt;&quot;</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="4-数组函数">4.数组函数</h4>
+<ul>
+<li>
+<p><code>is_array()</code></p>
+</li>
+<li>
+<p><code>count()</code>:顶层元素数量</p>
+</li>
+<li>
+<p><code>sort()</code>:排序，<code>rsort()</code> 反序排列</p>
+<ul>
+<li>
+<p><code>sort()</code>直接在数组上排序</p>
+</li>
+<li>
+<p><code>sort($a,SORT_NUMERIC)</code>  按照数值排序</p>
+</li>
+<li>
+<p><code>sort($a,SORT_STRING)</code>  按照字符串排序</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>shuffle($cards)</code> 对数组随机排序</p>
+</li>
+<li>
+<p><code>explode()</code>：按照指定分隔符，切分字符串为数组</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="variable">$temp</span> = explode(<span class="string">&#x27; &#x27;</span>, <span class="string">&quot;This is a sentence with seven words&quot;</span>);</span><br><span class="line">  print_r(<span class="variable">$temp</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Array</span><br><span class="line">(</span><br><span class="line">    [0] =&gt; This</span><br><span class="line">    [1] =&gt; is</span><br><span class="line">    [2] =&gt; a</span><br><span class="line">    [3] =&gt; sentence</span><br><span class="line">    [4] =&gt; with</span><br><span class="line">    [5] =&gt; seven</span><br><span class="line">    [6] =&gt; words</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="variable">$temp</span> = explode(<span class="string">&#x27;***&#x27;</span>, <span class="string">&quot;A***sentence***with***asterisks&quot;</span>);</span><br><span class="line">  print_r(<span class="variable">$temp</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Array</span><br><span class="line">(</span><br><span class="line">    [0] =&gt; A</span><br><span class="line">    [1] =&gt; sentence</span><br><span class="line">    [2] =&gt; with</span><br><span class="line">    [3] =&gt; asterisks</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><code>extract()</code>:将关联数组的键值对转成 <code>变量=值</code> 的形式</p>
+<p>常用于将$_GET与$_POST,用法：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">extract(<span class="variable">$_GET</span>);<span class="comment">//普通用法</span></span><br><span class="line">extract(<span class="variable">$_GET</span>,EXTR_PREFIX_ALL,<span class="string">&#x27;fromget&#x27;</span>);<span class="comment">//变量名都有前缀fromget,防止变量名的重复而覆盖</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><code>compact()</code>:作用与 <code>extract()</code>相反</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="variable">$fname</span>         = <span class="string">&quot;Doctor&quot;</span>;</span><br><span class="line">  <span class="variable">$sname</span>         = <span class="string">&quot;Who&quot;</span>;</span><br><span class="line">  <span class="variable">$planet</span>        = <span class="string">&quot;Gallifrey&quot;</span>;</span><br><span class="line">  <span class="variable">$system</span>        = <span class="string">&quot;Gridlock&quot;</span>;</span><br><span class="line">  <span class="variable">$constellation</span> = <span class="string">&quot;Kasterborous&quot;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="variable">$contact</span> = compact(<span class="string">&#x27;fname&#x27;</span>, <span class="string">&#x27;sname&#x27;</span>, <span class="string">&#x27;planet&#x27;</span>, <span class="string">&#x27;system&#x27;</span>, <span class="string">&#x27;constellation&#x27;</span>);</span><br><span class="line"></span><br><span class="line">  print_r(<span class="variable">$contact</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Array</span></span><br><span class="line">(</span><br><span class="line">    [fname] =&gt; Doctor</span><br><span class="line">    [sname] =&gt; Who</span><br><span class="line">    [planet] =&gt; Gallifrey</span><br><span class="line">    [system] =&gt; Gridlock</span><br><span class="line">    [constellation] =&gt; Kasterborous</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><code>reset()</code>:循环遍历过程中，将指向下一个元素的指针指向数组开始。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">reset(<span class="variable">$a</span>);<span class="comment">//丢弃返回值</span></span><br><span class="line"><span class="variable">$item</span> = reset(<span class="variable">$a</span>);<span class="comment">//在$item中保存数组中第一个元素</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><code>end()</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">end($a);&#x2F;&#x2F;将数组指针移动到最后</span><br><span class="line">$item &#x3D; end($a);&#x2F;&#x2F;在$item中保存数组最后的元素</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="0x05-实用PHP技术">0x05 实用PHP技术</h2>
+<h4 id="1-打印格式">1.打印格式</h4>
+<p>​		<code>printf()</code>比<code>print</code>和<code>echo</code>的强大之处在于，格式化输出格式，常见的数字转换、控制精度、填充字符等；和C语言中的 <code>printf()</code>极为相似。<code>sprintf()</code>可以将打印结果存在变量中，不用输出至浏览器。</p>
+<h4 id="2-时间格式">2.时间格式</h4>
+<p>​		使用UNIX的时间戳，按秒数存储。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> time(); <span class="comment">//当前时间戳</span></span><br><span class="line"><span class="keyword">echo</span> time()+<span class="number">7</span>*<span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>; <span class="comment">//下周此时的时间戳</span></span><br><span class="line"><span class="keyword">echo</span> mktime(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">2000</span>); <span class="comment">//2000年一月一日第一秒的时间戳</span></span><br><span class="line"><span class="comment">//从左至右参数</span></span><br><span class="line"><span class="comment">//时、分、秒、月、日、年（1970~2038）</span></span><br><span class="line"></span><br><span class="line">date(<span class="variable">$format</span>,<span class="variable">$timestamp</span>);<span class="comment">//转变时间戳的输出格式</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>由于时间戳只能到2038年，因此会出现Y2K38漏洞，在PHP5.2 引入DateTime类解决问题，仅在64位计算机。</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="variable">$month</span> = <span class="number">9</span>;    <span class="comment">// September (only has 30 days)</span></span><br><span class="line">  <span class="variable">$day</span>   = <span class="number">31</span>;   <span class="comment">// 31st</span></span><br><span class="line">  <span class="variable">$year</span>  = <span class="number">2018</span>; <span class="comment">// 2018</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (checkdate(<span class="variable">$month</span>, <span class="variable">$day</span>, <span class="variable">$year</span>)) <span class="keyword">echo</span> <span class="string">&quot;Date is valid&quot;</span>;<span class="comment">//检查日期是否合法</span></span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">echo</span> <span class="string">&quot;Date is invalid&quot;</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="3-文件操作">3.文件操作</h4>
+<p>​		Windows和MacOS X对文件命名大小是不敏感的，Linux和Unix是敏感的。区分大小写是好习惯。</p>
+<ul>
+<li>文件写</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> <span class="comment">//文件写操作 </span></span><br><span class="line">	<span class="keyword">if</span>(file_exists(<span class="string">&quot;testfile.txt&quot;</span>)) <span class="keyword">echo</span> <span class="string">&quot;File exists.&quot;</span>;<span class="comment">//检查文件是会否存在函数</span></span><br><span class="line">  <span class="variable">$fh</span> = fopen(<span class="string">&quot;testfile.txt&quot;</span>, <span class="string">&#x27;w&#x27;</span>) <span class="keyword">or</span> <span class="keyword">die</span>(<span class="string">&quot;Failed to create file&quot;</span>);</span><br><span class="line">  <span class="variable">$text</span> = &lt;&lt;&lt;_END</span><br><span class="line">Line <span class="number">1</span></span><br><span class="line">Line <span class="number">2</span></span><br><span class="line">Line <span class="number">3</span></span><br><span class="line">_END;</span><br><span class="line"></span><br><span class="line">  fwrite(<span class="variable">$fh</span>, <span class="variable">$text</span>) <span class="keyword">or</span> <span class="keyword">die</span>(<span class="string">&quot;Could not write to file&quot;</span>);</span><br><span class="line">  fclose(<span class="variable">$fh</span>);</span><br><span class="line">  <span class="keyword">echo</span> <span class="string">&quot;File &#x27;testfile.txt&#x27; written successfully&quot;</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>文件读</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> <span class="comment">//文件读操作</span></span><br><span class="line">  <span class="variable">$fh</span> = fopen(<span class="string">&quot;testfile.txt&quot;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">or</span>              </span><br><span class="line">    <span class="keyword">die</span>(<span class="string">&quot;File does not exist or you lack permission to open it&quot;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="variable">$line</span> = fgets(<span class="variable">$fh</span>);</span><br><span class="line">	<span class="variable">$text</span> = fread(<span class="variable">$fh</span>,<span class="number">3</span>); <span class="comment">//常用于读取二进制文件，注意换行符个数</span></span><br><span class="line">  fclose(<span class="variable">$fh</span>);</span><br><span class="line">  <span class="keyword">echo</span> <span class="variable">$line</span>;<span class="comment">//Line 1</span></span><br><span class="line">	<span class="keyword">echo</span> <span class="variable">$text</span>;<span class="comment">//Lin</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>复制、移动、删除</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> <span class="comment">//使用前最好用file_exists()检查文件是否存在</span></span><br><span class="line">	<span class="comment">//复制</span></span><br><span class="line">  <span class="keyword">if</span> (!copy(<span class="string">&#x27;testfile.txt&#x27;</span>, <span class="string">&#x27;testfile2.txt&#x27;</span>))</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;Could not copy file&quot;</span>;</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">echo</span> <span class="string">&quot;File successfully copied to &#x27;testfile2.txt&#x27;&quot;</span>;</span><br><span class="line">  <span class="comment">//移动</span></span><br><span class="line">  <span class="keyword">if</span> (!rename(<span class="string">&#x27;testfile2.txt&#x27;</span>, <span class="string">&#x27;testfile2.new&#x27;</span>))</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;Could not rename file&quot;</span>;</span><br><span class="line">  <span class="keyword">else</span> </span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;File successfully renamed to &#x27;testfile2.new&#x27;&quot;</span>;</span><br><span class="line">	<span class="comment">//删除</span></span><br><span class="line">  <span class="keyword">if</span> (!unlink(<span class="string">&#x27;testfile2.new&#x27;</span>)) </span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;Could not delete file&quot;</span>;</span><br><span class="line">  <span class="keyword">else</span> </span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;File &#x27;testfile2.new&#x27; successfully deleted&quot;</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>文件更新</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> <span class="comment">//更新文件</span></span><br><span class="line">  <span class="variable">$fh</span> = fopen(<span class="string">&quot;testfile.txt&quot;</span>, <span class="string">&#x27;r+&#x27;</span>) <span class="keyword">or</span> <span class="keyword">die</span>(<span class="string">&quot;Failed to open file&quot;</span>);</span><br><span class="line">  <span class="variable">$text</span> = fgets(<span class="variable">$fh</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (flock(<span class="variable">$fh</span>, LOCK_EX)) <span class="comment">//文件加锁</span></span><br><span class="line">  &#123;</span><br><span class="line">    fseek(<span class="variable">$fh</span>, <span class="number">0</span>, SEEK_END);</span><br><span class="line">    fwrite(<span class="variable">$fh</span>, <span class="string">&quot;<span class="subst">$text</span>&quot;</span>) <span class="keyword">or</span> <span class="keyword">die</span>(<span class="string">&quot;Could not write to file&quot;</span>);</span><br><span class="line">    flock(<span class="variable">$fh</span>, LOCK_UN); <span class="comment">//文件解锁</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  fclose(<span class="variable">$fh</span>);</span><br><span class="line">  <span class="keyword">echo</span> <span class="string">&quot;File &#x27;testfile.txt&#x27; successfully updated&quot;</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>说明：不是所有的文件系统都支持文件加锁。</p>
+<p><code>fseek()</code>参数说明：</p>
+<blockquote>
+<ul>
+<li>第一参数$fh:指处理的文件</li>
+<li>第二参数：文件内部指针偏移量，记为n。</li>
+<li>第三参数：
+<ul>
+<li>SEEK_END：从文件末尾往前偏移n位</li>
+<li>SEEK_SET：指向n的位置</li>
+<li>SEEK_CUR:在当前基础上往后偏移n位</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li>简易读取</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> file_get_contents(<span class="string">&quot;testfile.txt&quot;</span>); <span class="comment">//简单明了的读取文件全部内容</span></span><br><span class="line"><span class="keyword">echo</span> file_get_contents(<span class="string">&quot;http://lowbee.fun&quot;</span>);<span class="comment">//也可获取在线文件</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>文件上传</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">  <span class="keyword">echo</span> &lt;&lt;&lt;_END</span><br><span class="line">    &lt;html&gt;&lt;head&gt;&lt;title&gt;PHP Form Upload&lt;/title&gt;&lt;/head&gt;&lt;body&gt;</span><br><span class="line">    &lt;form method=<span class="string">&#x27;post&#x27;</span> action=<span class="string">&#x27;upload2.php&#x27;</span> enctype=<span class="string">&#x27;multipart/form-data&#x27;</span>&gt;</span><br><span class="line">    Select a JPG, GIF, PNG <span class="keyword">or</span> TIF File:</span><br><span class="line">    &lt;input type=<span class="string">&#x27;file&#x27;</span> name=<span class="string">&#x27;filename&#x27;</span> size=<span class="string">&#x27;10&#x27;</span>&gt;</span><br><span class="line">    &lt;input type=<span class="string">&#x27;submit&#x27;</span> value=<span class="string">&#x27;Upload&#x27;</span>&gt;&lt;/form&gt;</span><br><span class="line">_END;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="variable">$_FILES</span>)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="variable">$name</span> = <span class="variable">$_FILES</span>[<span class="string">&#x27;filename&#x27;</span>][<span class="string">&#x27;name&#x27;</span>];</span><br><span class="line">    <span class="keyword">switch</span>(<span class="variable">$_FILES</span>[<span class="string">&#x27;filename&#x27;</span>][<span class="string">&#x27;type&#x27;</span>])</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">&#x27;image/jpeg&#x27;</span>: <span class="variable">$ext</span> = <span class="string">&#x27;jpg&#x27;</span>; <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">&#x27;image/gif&#x27;</span>:  <span class="variable">$ext</span> = <span class="string">&#x27;gif&#x27;</span>; <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">&#x27;image/png&#x27;</span>:  <span class="variable">$ext</span> = <span class="string">&#x27;png&#x27;</span>; <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">&#x27;image/tiff&#x27;</span>: <span class="variable">$ext</span> = <span class="string">&#x27;tif&#x27;</span>; <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">default</span>:           <span class="variable">$ext</span> = <span class="string">&#x27;&#x27;</span>;    <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$ext</span>)</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="variable">$n</span> = <span class="string">&quot;image.<span class="subst">$ext</span>&quot;</span>;</span><br><span class="line">      move_uploaded_file(<span class="variable">$_FILES</span>[<span class="string">&#x27;filename&#x27;</span>][<span class="string">&#x27;tmp_name&#x27;</span>], <span class="variable">$n</span>);<span class="comment">//将临时存储文件转为永久存储文件</span></span><br><span class="line">      <span class="keyword">echo</span> <span class="string">&quot;Uploaded image &#x27;<span class="subst">$name</span>&#x27; as &#x27;<span class="subst">$n</span>&#x27;:&lt;br&gt;&quot;</span>;</span><br><span class="line">      <span class="keyword">echo</span> <span class="string">&quot;&lt;img src=&#x27;<span class="subst">$n</span>&#x27;&gt;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">echo</span> <span class="string">&quot;&#x27;<span class="subst">$name</span>&#x27; is not an accepted image file&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">echo</span> <span class="string">&quot;No image has been uploaded&quot;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">echo</span> <span class="string">&quot;&lt;/body&gt;&lt;/html&gt;&quot;</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>假设提交表单时文件名为 <code>file</code>，前端定义的文件名：</p>
+<table>
+<thead>
+<tr>
+<th>数组元素</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$_FILES[‘file’][‘name’]</td>
+<td>上传文件名</td>
+</tr>
+<tr>
+<td>$_FILES[‘file’][‘type’]</td>
+<td>文件类型(如image/jpeg)</td>
+</tr>
+<tr>
+<td>$_FILES[‘file’][‘size’]</td>
+<td>文件大小(字节)</td>
+</tr>
+<tr>
+<td>$_FILES[‘file’][‘tmp_name’]</td>
+<td>临时服务器上的文件名</td>
+</tr>
+<tr>
+<td>$_FILES[‘file’][‘error’]</td>
+<td>错误代码</td>
+</tr>
+</tbody>
+</table>
+<h4 id="4-系统调用">4.系统调用</h4>
+<p><code>exec()</code>函数的使用。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="variable">$cmd</span> = <span class="string">&quot;pwd&quot;</span>;</span><br><span class="line">    exec(escapeshellcmd(<span class="variable">$cmd</span>),<span class="variable">$output</span>,<span class="variable">$status</span>);</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$status</span>) <span class="keyword">echo</span> <span class="string">&quot;Error&quot;</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">foreach</span>(<span class="variable">$output</span> <span class="keyword">as</span> <span class="variable">$line</span>) <span class="keyword">echo</span> <span class="variable">$line</span>.<span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>
+<p>$status保存运行状态</p>
+</li>
+<li>
+<p>$output保存返回结果</p>
+</li>
+<li>
+<p>escapeshellcmd():<strong>转义存在欺骗的字符</strong>。</p>
+<p>反斜线（\）会在以下字符之前插入： *&amp;#;`|*?~&lt;&gt;^()[]{}$*, <em>\x0A</em> 和 <em>\xFF</em>。 <em>’</em> 和 <em>&quot;</em> 仅在不配对儿的时候被转义。 在 Windows 平台上，所有这些字符以及 <em>%</em> 和 <em>!</em> 字符都会被空格代替。</p>
+</li>
+</ul>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Low Bee</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://lowbee.fun/2020/07/15/MAMP-1/">http://lowbee.fun/2020/07/15/MAMP-1/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/PHP/">PHP</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/default.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> Donate</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/07/16/MAMP-2/"><img class="prev-cover" src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/default.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">MAMP-2</div></div></a></div><div class="next-post pull-right"><a href="/2020/07/10/%E6%9A%91%E6%9C%9F%E5%AE%9E%E8%AE%ADSDN-QoS%E5%B7%AE%E5%BC%82%E5%8C%96%E6%9C%8D%E5%8A%A1/"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/Screen-Shot-2019-05-01-at-2.32.04-pm.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">暑期实训SDN--QoS差异化服务</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/头像.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Low Bee</div><div class="author-info__description">科研废物</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">70</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">40</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">8</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lowbee2019"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/lowbee2019" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:lowbee@vip.qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">社会主义接班人！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-%E5%85%B3%E4%BA%8EPHP"><span class="toc-number">1.</span> <span class="toc-text">0x01 关于PHP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-PHP%E4%B8%AD%E7%9A%84%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%92%8C%E6%8E%A7%E5%88%B6%E6%B5%81"><span class="toc-number">2.</span> <span class="toc-text">0x02 PHP中的表达式和控制流</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-PHP%E5%87%BD%E6%95%B0%E4%B8%8E%E5%AF%B9%E8%B1%A1"><span class="toc-number">3.</span> <span class="toc-text">0x03 PHP函数与对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x04-PHP%E7%9A%84%E6%95%B0%E7%BB%84"><span class="toc-number">4.</span> <span class="toc-text">0x04 PHP的数组</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%95%B0%E5%80%BC%E6%95%B0%E7%BB%84"><span class="toc-number">4.0.1.</span> <span class="toc-text">1.数值数组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%85%B3%E8%81%94%E6%95%B0%E7%BB%84"><span class="toc-number">4.0.2.</span> <span class="toc-text">2.关联数组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="toc-number">4.0.3.</span> <span class="toc-text">3.多维数组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E6%95%B0%E7%BB%84%E5%87%BD%E6%95%B0"><span class="toc-number">4.0.4.</span> <span class="toc-text">4.数组函数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x05-%E5%AE%9E%E7%94%A8PHP%E6%8A%80%E6%9C%AF"><span class="toc-number">5.</span> <span class="toc-text">0x05 实用PHP技术</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%89%93%E5%8D%B0%E6%A0%BC%E5%BC%8F"><span class="toc-number">5.0.1.</span> <span class="toc-text">1.打印格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%97%B6%E9%97%B4%E6%A0%BC%E5%BC%8F"><span class="toc-number">5.0.2.</span> <span class="toc-text">2.时间格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="toc-number">5.0.3.</span> <span class="toc-text">3.文件操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8"><span class="toc-number">5.0.4.</span> <span class="toc-text">4.系统调用</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/12/20/Paper-33/" title="ClusterGAN: Latent Space Clustering in Generative Adversarial Networks"><img src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/default.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ClusterGAN: Latent Space Clustering in Generative Adversarial Networks"/></a><div class="content"><a class="title" href="/2021/12/20/Paper-33/" title="ClusterGAN: Latent Space Clustering in Generative Adversarial Networks">ClusterGAN: Latent Space Clustering in Generative Adversarial Networks</a><time datetime="2021-12-20T02:47:34.000Z" title="Created 2021-12-20 10:47:34">2021-12-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/26/Reinforcement-Learning-ZouWei-3/" title="Reinforcement Learning ZouWei(III)"><img src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/f5d6603125a166875ed1666ca908e45b.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Reinforcement Learning ZouWei(III)"/></a><div class="content"><a class="title" href="/2021/11/26/Reinforcement-Learning-ZouWei-3/" title="Reinforcement Learning ZouWei(III)">Reinforcement Learning ZouWei(III)</a><time datetime="2021-11-26T01:26:30.000Z" title="Created 2021-11-26 09:26:30">2021-11-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/25/Reinforcement-Learning-ZouWei-2/" title="Reinforcement Learning ZouWei(II)"><img src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/f5d6603125a166875ed1666ca908e45b.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Reinforcement Learning ZouWei(II)"/></a><div class="content"><a class="title" href="/2021/11/25/Reinforcement-Learning-ZouWei-2/" title="Reinforcement Learning ZouWei(II)">Reinforcement Learning ZouWei(II)</a><time datetime="2021-11-25T11:24:14.000Z" title="Created 2021-11-25 19:24:14">2021-11-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/22/Reinforcement-Learning-ZouWei-1/" title="Reinforcement Learning ZouWei(I)"><img src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/f5d6603125a166875ed1666ca908e45b.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Reinforcement Learning ZouWei(I)"/></a><div class="content"><a class="title" href="/2021/11/22/Reinforcement-Learning-ZouWei-1/" title="Reinforcement Learning ZouWei(I)">Reinforcement Learning ZouWei(I)</a><time datetime="2021-11-22T13:46:09.000Z" title="Created 2021-11-22 21:46:09">2021-11-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/06/17/Paper-32/" title="Federated Evaluation of On-device Personalization"><img src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/default.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Federated Evaluation of On-device Personalization"/></a><div class="content"><a class="title" href="/2021/06/17/Paper-32/" title="Federated Evaluation of On-device Personalization">Federated Evaluation of On-device Personalization</a><time datetime="2021-06-17T13:07:02.000Z" title="Created 2021-06-17 21:07:02">2021-06-17</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/default.png')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Low Bee</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">Local search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.css"><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', '', 'katex-wrap')
+  })
+})()</script></div><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-show-text.min.js" data-mobile="true" data-text="富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="true" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"./live2d_models/haruna/22/model.2017.school.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body></html>

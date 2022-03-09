@@ -1,0 +1,909 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>暑期实训SDN--OpenDayLight | LowBee's Blog</title><meta name="keywords" content="OpenDayLight"><meta name="author" content="Low Bee"><meta name="copyright" content="Low Bee"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="OpenDayLight 还是根据实验自己操作。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="暑期实训SDN--OpenDayLight">
+<meta property="og:url" content="http://lowbee.fun/2020/07/01/%E6%9A%91%E6%9C%9F%E5%AE%9E%E8%AE%ADSDN-OpenDayLight/index.html">
+<meta property="og:site_name" content="LowBee&#39;s Blog">
+<meta property="og:description" content="OpenDayLight 还是根据实验自己操作。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/Screen-Shot-2019-05-01-at-2.32.04-pm.png">
+<meta property="article:published_time" content="2020-07-01T13:05:03.000Z">
+<meta property="article:modified_time" content="2021-04-25T12:11:51.106Z">
+<meta property="article:author" content="Low Bee">
+<meta property="article:tag" content="OpenDayLight">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/Screen-Shot-2019-05-01-at-2.32.04-pm.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://lowbee.fun/2020/07/01/%E6%9A%91%E6%9C%9F%E5%AE%9E%E8%AE%ADSDN-OpenDayLight/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-197495331-1"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'UA-197495331-1');
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-04-25 20:11:51'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/头像.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">70</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">40</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">8</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/Screen-Shot-2019-05-01-at-2.32.04-pm.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">LowBee's Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">暑期实训SDN--OpenDayLight</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2020-07-01T13:05:03.000Z" title="Created 2020-07-01 21:05:03">2020-07-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-04-25T12:11:51.106Z" title="Updated 2021-04-25 20:11:51">2021-04-25</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/SDN/">SDN</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">4.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>21min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="暑期实训SDN--OpenDayLight"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>OpenDayLight 还是根据实验自己操作。</p>
+<span id="more"></span>
+<h2 id="0x01-流表结构">0x01 流表结构</h2>
+<p>OpenFlow1.3的流表结构：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/2f058b9fcbb8e23668790bf19c048494.png" alt=""></p>
+<h4 id="1、匹配域：">1、匹配域：</h4>
+<p>​		和OpenFlow1.0流表的包头域是相同的，涵盖了ISO网络模型中的第二至第四层的网络配置信息；所以可根据需求分为二三四层进行流表下发：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>入端口</strong></th>
+<th style="text-align:left"><strong>目的MAC地址</strong></th>
+<th style="text-align:left"><strong>以太网类型</strong></th>
+<th style="text-align:left"><strong>VLAN ID</strong></th>
+<th style="text-align:left"><strong>VLAN 优先级</strong></th>
+<th style="text-align:left"><strong>源IP地址</strong></th>
+<th style="text-align:left"><strong>目的IP地址</strong></th>
+<th style="text-align:left"><strong>IP协议</strong></th>
+<th style="text-align:left"><strong>IP TOS位</strong></th>
+<th style="text-align:left"><strong>TCP/UDP源端口</strong></th>
+<th style="text-align:left"><strong>TCP/UDP目的端口</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Ingress Port</td>
+<td style="text-align:left">Ehter Des</td>
+<td style="text-align:left">Ether Type</td>
+<td style="text-align:left">VLAN ID</td>
+<td style="text-align:left">VLAN Priority</td>
+<td style="text-align:left">IP Src</td>
+<td style="text-align:left">IP Dst</td>
+<td style="text-align:left">IP Proto</td>
+<td style="text-align:left">IP TOS bits</td>
+<td style="text-align:left">TCP/UDP Src Port</td>
+<td style="text-align:left">TCP/UDP Dst Port</td>
+</tr>
+</tbody>
+</table>
+<h4 id="2、优先级：流表项的匹配次序。">2、优先级：流表项的匹配次序。</h4>
+<h4 id="3、计数器：">3、计数器：</h4>
+<p>​		计数器可以针对交换机中每条流表、每个数据流、每个设备端口、每个转发队列进行维护，用于统计数据流表的相关信息。</p>
+<h4 id="4、Instructions指令集：">4、Instructions指令集：</h4>
+<p>​		每个流表项都包含一组指令，当一个数据包匹配表项时指令会被执行。这些指令可以更改数据包，动作集或者流表处理。</p>
+<h4 id="5、超时：最大时间计数或流有效时间">5、超时：最大时间计数或流有效时间</h4>
+<h4 id="6、cookie：">6、cookie：</h4>
+<p>​		由控制器选择的不透明数据值。控制器用来过滤流统计数据、流改变和流删除。但处理数据包时不能使用。</p>
+<h2 id="0x02-匹配域解析流程：">0x02 匹配域解析流程：</h2>
+<p>​		当SDN交换机接收到一个数据包时，将<strong>按照优先级从table0依次匹配</strong>其本地保存的流表中的表项，并以发生具有最高优先级的匹配表项作为匹配结果，并根据相应的动作对数据包进行操作。同时，一旦匹配成功，对应的计数器将更新；而如果没能找到匹配的表项，则将数据包转发给控制器。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/b9a2ddbc8d54d6ec57714c95d5b4c775.png" alt=""></p>
+<blockquote>
+<ol>
+<li>初始化包头域，按照包头域的组成—设置每个字段，其中入端口是接收数据包的物理端口。</li>
+<li>如果数据包类型是VLAN（0x8100），那么就使用VLAN<br>
+ID和PCP字段进行表查找，解封以太网类型为先的以太网类型解析做准备。</li>
+<li>（可选）如果是ARP数据包（0x0806）,那么匹配字段就可能包含IP源和目的地址。</li>
+<li>如果是IP数据包（0x0800）,那么匹配字段就会包含IP首部。如果IP数据包的分段偏移量不为0或者设置了多个分段bit位，那么将所有传输端口设为0。如果IP数据包在IP协议族中的编号为6或者17（分别是TCP/UDP类型），那么匹配字段包含传输端口。如果编号为1（ICMP数据包）则包含Type和Code字段。</li>
+</ol>
+</blockquote>
+<h4 id="OpenFlow1-3匹配流程如下：">OpenFlow1.3匹配流程如下：</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/c2620e6f64dcc92177e362eb224b9dd6.png" alt=""></p>
+<blockquote>
+<ul>
+<li>可以通过报文的入端口或者元数据信息来进行报文的匹配，一个流表项中可以同时存在多个匹配项，一个报文需要同时普票流表项中所有匹配项才能匹配该流表项。</li>
+<li>报文匹配按照现有的报文字段进行，比如前一个流表通过apply-actions改变了该报文的某个字段，则下一个表现按照修改后的字段进行匹配。如果匹配成功;则按照指令集里的动作更新动作集，活更新报文/匹配集字段，或更新元数据和计数器。</li>
+<li>根据指令是否继续前往下一个流表，不继续则终止匹配流程执行动作集，如果指令要去继续前往下一流表则继续匹配，下一个流表的ID需要比当前流表ID大。</li>
+<li>当报文匹配失败，如果存在无匹配流表项（table-miss）就按照该表项执行指令，一般是将报文转发给控制器、丢弃或者转发给其他流表。如果没有table-miss表项则默认丢弃该报文。</li>
+</ul>
+</blockquote>
+<h2 id="0x03-实验环境">0x03 实验环境</h2>
+<blockquote>
+<p>Postman调用ODL下发流表、可以本地搭建环境，下发时端口8080和8181都可以</p>
+</blockquote>
+<ul>
+<li>
+<p>启动控制器：<code>netstat -an|grep 6633</code>查看OpenDaylight是否工作正常</p>
+</li>
+<li>
+<p>登录交换机：<code>ovs-vsctl show</code>查看交换机是否成功连接远端控制器</p>
+<p>如果没有连接：</p>
+<p><code>ovs-vsctl del-controller br-sw</code>,删除br-sw(网桥名)的控制器</p>
+<p><code>ovs-vsctl set-contoller br-sw tcp:Controller_ip:6633 </code>连接地址为Controller_ip的控制器</p>
+</li>
+<li>
+<p>登录两个主机查看IP地址</p>
+<blockquote>
+<p>以下内容均在本地利用Mininet搭建环境实现的。</p>
+</blockquote>
+<p>实验拓扑如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/20200708212544.png" alt=""></p>
+</li>
+<li>
+<p>登录控制器，运行Postman：</p>
+<ul>
+<li>打开Basic Auth页签：Username和Password 都填写admin完成认证。</li>
+<li>GET方式发送URL：<a target="_blank" rel="noopener" href="http://127.0.0.1:8080/restconf/operational/network-topology:network-topology">http://127.0.0.1:8080/restconf/operational/network-topology:network-topology</a></li>
+</ul>
+<p>返回交换机id信息，从返回信息也能得到交换机的node-id是:openflow:1</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;network-topology&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;topology&quot;</span>: [</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">&quot;topology-id&quot;</span>: <span class="string">&quot;flow:1&quot;</span>,</span><br><span class="line">                <span class="attr">&quot;node&quot;</span>: [</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="attr">&quot;node-id&quot;</span>: <span class="string">&quot;host:00:00:00:00:00:02&quot;</span>,</span><br><span class="line">                        <span class="attr">&quot;termination-point&quot;</span>: [</span><br><span class="line">                            &#123;</span><br><span class="line">                                <span class="attr">&quot;tp-id&quot;</span>: <span class="string">&quot;host:00:00:00:00:00:02&quot;</span></span><br><span class="line">                            &#125;</span><br><span class="line">                        ],</span><br><span class="line">                        <span class="attr">&quot;host-tracker-service:addresses&quot;</span>: [</span><br><span class="line">                            &#123;</span><br><span class="line">                                <span class="attr">&quot;id&quot;</span>: <span class="number">4</span>,</span><br><span class="line">                                <span class="attr">&quot;mac&quot;</span>: <span class="string">&quot;00:00:00:00:00:02&quot;</span>,</span><br><span class="line">                                <span class="attr">&quot;last-seen&quot;</span>: <span class="number">1594214716094</span>,</span><br><span class="line">                                <span class="attr">&quot;ip&quot;</span>: <span class="string">&quot;10.0.0.2&quot;</span>,</span><br><span class="line">                                <span class="attr">&quot;first-seen&quot;</span>: <span class="number">1594214716094</span></span><br><span class="line">                            &#125;</span><br><span class="line">                        ],</span><br><span class="line">                        <span class="attr">&quot;host-tracker-service:attachment-points&quot;</span>: [</span><br><span class="line">                            &#123;</span><br><span class="line">                                <span class="attr">&quot;tp-id&quot;</span>: <span class="string">&quot;openflow:1:2&quot;</span>,</span><br><span class="line">                                <span class="attr">&quot;corresponding-tp&quot;</span>: <span class="string">&quot;host:00:00:00:00:00:02&quot;</span>,</span><br><span class="line">                                <span class="attr">&quot;active&quot;</span>: <span class="literal">true</span></span><br><span class="line">                            &#125;</span><br><span class="line">                        ],</span><br><span class="line">                        <span class="attr">&quot;host-tracker-service:id&quot;</span>: <span class="string">&quot;00:00:00:00:00:02&quot;</span></span><br><span class="line">                    &#125;,</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="attr">&quot;node-id&quot;</span>: <span class="string">&quot;host:00:00:00:00:00:01&quot;</span>,</span><br><span class="line">                        <span class="attr">&quot;termination-point&quot;</span>: [</span><br><span class="line">                            &#123;</span><br><span class="line">                                <span class="attr">&quot;tp-id&quot;</span>: <span class="string">&quot;host:00:00:00:00:00:01&quot;</span></span><br><span class="line">                            &#125;</span><br><span class="line">                        ],</span><br><span class="line">                        <span class="attr">&quot;host-tracker-service:addresses&quot;</span>: [</span><br><span class="line">                            &#123;</span><br><span class="line">                                <span class="attr">&quot;id&quot;</span>: <span class="number">3</span>,</span><br><span class="line">                                <span class="attr">&quot;mac&quot;</span>: <span class="string">&quot;00:00:00:00:00:01&quot;</span>,</span><br><span class="line">                                <span class="attr">&quot;last-seen&quot;</span>: <span class="number">1594214716093</span>,</span><br><span class="line">                                <span class="attr">&quot;ip&quot;</span>: <span class="string">&quot;10.0.0.1&quot;</span>,</span><br><span class="line">                                <span class="attr">&quot;first-seen&quot;</span>: <span class="number">1594214716093</span></span><br><span class="line">                            &#125;</span><br><span class="line">                        ],</span><br><span class="line">                        <span class="attr">&quot;host-tracker-service:attachment-points&quot;</span>: [</span><br><span class="line">                            &#123;</span><br><span class="line">                                <span class="attr">&quot;tp-id&quot;</span>: <span class="string">&quot;openflow:1:1&quot;</span>,</span><br><span class="line">                                <span class="attr">&quot;corresponding-tp&quot;</span>: <span class="string">&quot;host:00:00:00:00:00:01&quot;</span>,</span><br><span class="line">                                <span class="attr">&quot;active&quot;</span>: <span class="literal">true</span></span><br><span class="line">                            &#125;</span><br><span class="line">                        ],</span><br><span class="line">                        <span class="attr">&quot;host-tracker-service:id&quot;</span>: <span class="string">&quot;00:00:00:00:00:01&quot;</span></span><br><span class="line">                    &#125;,</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="attr">&quot;node-id&quot;</span>: <span class="string">&quot;openflow:1&quot;</span>,</span><br><span class="line">                        <span class="attr">&quot;opendaylight-topology-inventory:inventory-node-ref&quot;</span>: <span class="string">&quot;/opendaylight-inventory:nodes/opendaylight-inventory:node[opendaylight-inventory:id=&#x27;openflow:1&#x27;]&quot;</span>,</span><br><span class="line">                        <span class="attr">&quot;termination-point&quot;</span>: [</span><br><span class="line">                            &#123;</span><br><span class="line">                                <span class="attr">&quot;tp-id&quot;</span>: <span class="string">&quot;openflow:1:1&quot;</span>,</span><br><span class="line">                                <span class="attr">&quot;opendaylight-topology-inventory:inventory-node-connector-ref&quot;</span>: <span class="string">&quot;/opendaylight-inventory:nodes/opendaylight-inventory:node[opendaylight-inventory:id=&#x27;openflow:1&#x27;]/opendaylight-inventory:node-connector[opendaylight-inventory:id=&#x27;openflow:1:1&#x27;]&quot;</span></span><br><span class="line">                            &#125;,</span><br><span class="line">                            &#123;</span><br><span class="line">                                <span class="attr">&quot;tp-id&quot;</span>: <span class="string">&quot;openflow:1:LOCAL&quot;</span>,</span><br><span class="line">                                <span class="attr">&quot;opendaylight-topology-inventory:inventory-node-connector-ref&quot;</span>: <span class="string">&quot;/opendaylight-inventory:nodes/opendaylight-inventory:node[opendaylight-inventory:id=&#x27;openflow:1&#x27;]/opendaylight-inventory:node-connector[opendaylight-inventory:id=&#x27;openflow:1:LOCAL&#x27;]&quot;</span></span><br><span class="line">                            &#125;,</span><br><span class="line">                            &#123;</span><br><span class="line">                                <span class="attr">&quot;tp-id&quot;</span>: <span class="string">&quot;openflow:1:2&quot;</span>,</span><br><span class="line">                                <span class="attr">&quot;opendaylight-topology-inventory:inventory-node-connector-ref&quot;</span>: <span class="string">&quot;/opendaylight-inventory:nodes/opendaylight-inventory:node[opendaylight-inventory:id=&#x27;openflow:1&#x27;]/opendaylight-inventory:node-connector[opendaylight-inventory:id=&#x27;openflow:1:2&#x27;]&quot;</span></span><br><span class="line">                            &#125;</span><br><span class="line">                        ]</span><br><span class="line">                    &#125;</span><br><span class="line">                ],</span><br><span class="line">                <span class="attr">&quot;link&quot;</span>: [</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="attr">&quot;link-id&quot;</span>: <span class="string">&quot;openflow:1:2/host:00:00:00:00:00:02&quot;</span>,</span><br><span class="line">                        <span class="attr">&quot;source&quot;</span>: &#123;</span><br><span class="line">                            <span class="attr">&quot;source-node&quot;</span>: <span class="string">&quot;openflow:1&quot;</span>,</span><br><span class="line">                            <span class="attr">&quot;source-tp&quot;</span>: <span class="string">&quot;openflow:1:2&quot;</span></span><br><span class="line">                        &#125;,</span><br><span class="line">                        <span class="attr">&quot;destination&quot;</span>: &#123;</span><br><span class="line">                            <span class="attr">&quot;dest-node&quot;</span>: <span class="string">&quot;host:00:00:00:00:00:02&quot;</span>,</span><br><span class="line">                            <span class="attr">&quot;dest-tp&quot;</span>: <span class="string">&quot;host:00:00:00:00:00:02&quot;</span></span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;,</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="attr">&quot;link-id&quot;</span>: <span class="string">&quot;openflow:1:1/host:00:00:00:00:00:01&quot;</span>,</span><br><span class="line">                        <span class="attr">&quot;source&quot;</span>: &#123;</span><br><span class="line">                            <span class="attr">&quot;source-node&quot;</span>: <span class="string">&quot;openflow:1&quot;</span>,</span><br><span class="line">                            <span class="attr">&quot;source-tp&quot;</span>: <span class="string">&quot;openflow:1:1&quot;</span></span><br><span class="line">                        &#125;,</span><br><span class="line">                        <span class="attr">&quot;destination&quot;</span>: &#123;</span><br><span class="line">                            <span class="attr">&quot;dest-node&quot;</span>: <span class="string">&quot;host:00:00:00:00:00:01&quot;</span>,</span><br><span class="line">                            <span class="attr">&quot;dest-tp&quot;</span>: <span class="string">&quot;host:00:00:00:00:00:01&quot;</span></span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;,</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="attr">&quot;link-id&quot;</span>: <span class="string">&quot;host:00:00:00:00:00:02/openflow:1:2&quot;</span>,</span><br><span class="line">                        <span class="attr">&quot;source&quot;</span>: &#123;</span><br><span class="line">                            <span class="attr">&quot;source-node&quot;</span>: <span class="string">&quot;host:00:00:00:00:00:02&quot;</span>,</span><br><span class="line">                            <span class="attr">&quot;source-tp&quot;</span>: <span class="string">&quot;host:00:00:00:00:00:02&quot;</span></span><br><span class="line">                        &#125;,</span><br><span class="line">                        <span class="attr">&quot;destination&quot;</span>: &#123;</span><br><span class="line">                            <span class="attr">&quot;dest-node&quot;</span>: <span class="string">&quot;openflow:1&quot;</span>,</span><br><span class="line">                            <span class="attr">&quot;dest-tp&quot;</span>: <span class="string">&quot;openflow:1:2&quot;</span></span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;,</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="attr">&quot;link-id&quot;</span>: <span class="string">&quot;host:00:00:00:00:00:01/openflow:1:1&quot;</span>,</span><br><span class="line">                        <span class="attr">&quot;source&quot;</span>: &#123;</span><br><span class="line">                            <span class="attr">&quot;source-node&quot;</span>: <span class="string">&quot;host:00:00:00:00:00:01&quot;</span>,</span><br><span class="line">                            <span class="attr">&quot;source-tp&quot;</span>: <span class="string">&quot;host:00:00:00:00:00:01&quot;</span></span><br><span class="line">                        &#125;,</span><br><span class="line">                        <span class="attr">&quot;destination&quot;</span>: &#123;</span><br><span class="line">                            <span class="attr">&quot;dest-node&quot;</span>: <span class="string">&quot;openflow:1&quot;</span>,</span><br><span class="line">                            <span class="attr">&quot;dest-tp&quot;</span>: <span class="string">&quot;openflow:1:1&quot;</span></span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                ]</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>json的本质就是一个字典，只不过信息量一般比较多。</p>
+</blockquote>
+<h2 id="0x04-流表的下发">0x04 流表的下发</h2>
+<h3 id="1-L2层流表下发与验证">1.L2层流表下发与验证</h3>
+<blockquote>
+<p>L2层即对应OSI模型的二层，也就是说通过匹配源MAC（Ether source）、目的MAC地址（Ether dst）、以太网类型（Ether Type）VLAN id、VLAN优先级等字段来实现流的转发。本实验将基于源和目的MAC进行数据流的转发。</p>
+</blockquote>
+<ul>
+<li>
+<p>流表下发：</p>
+<blockquote>
+<p>提交方式：“PUT”</p>
+<p>URL内容：“<strong>http://{controller-ip}:8080/restconf/config/opendaylight-inventory:nodes/node/{node-id}/table/{table-id}/flow/{flow-id}</strong>。”</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="http://127.0.0.1:8080/restconf/config/opendaylight-inventory:nodes/node/openflow:1/table/0/flow/107">http://127.0.0.1:8080/restconf/config/opendaylight-inventory:nodes/node/openflow:1/table/0/flow/107</a></p>
+<p>headers设置如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/20200708221504.png" alt=""></p>
+<p>流表：匹配源MAC为00:00:00:00:00:01，目的MAC为00:00:00:00:00:01的流量，出端口为2。</p>
+</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">flow</span> <span class="attr">xmlns</span>=<span class="string">&quot;urn:opendaylight:flow:inventory&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">priority</span>&gt;</span>200<span class="tag">&lt;/<span class="name">priority</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">flow-name</span>&gt;</span>Foo1<span class="tag">&lt;/<span class="name">flow-name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">idle-timeout</span>&gt;</span>0<span class="tag">&lt;/<span class="name">idle-timeout</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">hard-timeout</span>&gt;</span>0<span class="tag">&lt;/<span class="name">hard-timeout</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">match</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ethernet-match</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ethernet-source</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">address</span>&gt;</span>00:00:00:00:00:01<span class="tag">&lt;/<span class="name">address</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ethernet-source</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ethernet-destination</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">address</span>&gt;</span>00:00:00:00:00:02<span class="tag">&lt;/<span class="name">address</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ethernet-destination</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ethernet-match</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">match</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">id</span>&gt;</span>107<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">table_id</span>&gt;</span>0<span class="tag">&lt;/<span class="name">table_id</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">instructions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">instruction</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">order</span>&gt;</span>0<span class="tag">&lt;/<span class="name">order</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">apply-actions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">action</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">order</span>&gt;</span>0<span class="tag">&lt;/<span class="name">order</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">output-action</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">output-node-connector</span>&gt;</span>2<span class="tag">&lt;/<span class="name">output-node-connector</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">output-action</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">action</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">apply-actions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">instruction</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">instructions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">flow</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>参数说明：</p>
+<ul>
+<li>Priority：匹配流表的优先级。</li>
+<li>flow-name：流表的名称。</li>
+<li>idle-timeout：设定超时时间(seconds)，参数为0表示永不超时。</li>
+<li>hard-timeout：最大超时时间(seconds)，参数为0表示永不超时。</li>
+<li>match：匹配Fields。</li>
+<li>instructions：修改action配置或pipeline处理。</li>
+<li>ethernet-source：源MAC地址。</li>
+<li>ethernet-destination：目的MAC地址。</li>
+</ul>
+</blockquote>
+<ul>
+<li>
+<p>流表查询：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">root@SDN:/home/low/Desktop# ovs-ofctl dump-flows s1</span><br><span class="line">NXST_FLOW reply (xid=0x4):</span><br><span class="line"> cookie=0x0, duration=49.262s, table=0, n_packets=0, n_bytes=0, idle_age=49, priority=200,dl_src=00:00:00:00:00:01,dl_dst=00:00:00:00:00:02 actions=output:2</span><br><span class="line"> cookie=0x2b00000000000001, duration=324.868s, table=0, n_packets=0, n_bytes=0, idle_age=324, priority=100,dl_type=0x88cc actions=CONTROLLER:65535</span><br><span class="line"> cookie=0x2b00000000000003, duration=322.871s, table=0, n_packets=9, n_bytes=650, idle_age=85, priority=2,in_port=2 actions=output:1,CONTROLLER:65535</span><br><span class="line"> cookie=0x2b00000000000004, duration=322.871s, table=0, n_packets=10, n_bytes=740, idle_age=77, priority=2,in_port=1 actions=output:2,CONTROLLER:65535</span><br><span class="line"> cookie=0x2b00000000000001, duration=324.868s, table=0, n_packets=7, n_bytes=622, idle_age=323, priority=0 actions=drop</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>流表删除：</p>
+<blockquote>
+<p>提交方式：“DELETE”</p>
+<p>URL内容：“<strong>http://{controller-ip}:8080/restconf/config/opendaylight-inventory:nodes/node/{node-id}/table/{table-id}/flow/{flow-id}</strong>。”</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">root@SDN:/home/low/Desktop# ovs-ofctl dump-flows s1</span><br><span class="line">NXST_FLOW reply (xid=0x4):</span><br><span class="line"> cookie=0x2b00000000000001, duration=402.008s, table=0, n_packets=0, n_bytes=0, idle_age=402, priority=100,dl_type=0x88cc actions=CONTROLLER:65535</span><br><span class="line"> cookie=0x2b00000000000003, duration=400.011s, table=0, n_packets=9, n_bytes=650, idle_age=162, priority=2,in_port=2 actions=output:1,CONTROLLER:65535</span><br><span class="line"> cookie=0x2b00000000000004, duration=400.011s, table=0, n_packets=10, n_bytes=740, idle_age=154, priority=2,in_port=1 actions=output:2,CONTROLLER:65535</span><br><span class="line"> cookie=0x2b00000000000001, duration=402.008s, table=0, n_packets=7, n_bytes=622, idle_age=400, priority=0 actions=drop</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="2-L3层流表下发与验证">2.L3层流表下发与验证</h3>
+<blockquote>
+<p>L3层对应OSI模型的三层，三层流表主要匹配的是IP包的协议类型和IP地址。</p>
+</blockquote>
+<p>下发、验证和删除和L2层相同，此处不再赘述。</p>
+<p><strong>场景1：匹配IP地址</strong></p>
+<p>匹配源IP地址为10.0.0.1/32的报文，并将其转发到2端口。注意ethernet-type为2048(0x0800)代表IPv4；</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">flow</span> <span class="attr">xmlns</span>=<span class="string">&quot;urn:opendaylight:flow:inventory&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">priority</span>&gt;</span>200<span class="tag">&lt;/<span class="name">priority</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">flow-name</span>&gt;</span>Foo1<span class="tag">&lt;/<span class="name">flow-name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">idle-timeout</span>&gt;</span>0<span class="tag">&lt;/<span class="name">idle-timeout</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">hard-timeout</span>&gt;</span>0<span class="tag">&lt;/<span class="name">hard-timeout</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">match</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ethernet-match</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ethernet-type</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">type</span>&gt;</span>2048<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ethernet-type</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ethernet-match</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ipv4-source</span>&gt;</span>10.0.0.1/32<span class="tag">&lt;/<span class="name">ipv4-source</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">match</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">id</span>&gt;</span>111<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">table_id</span>&gt;</span>0<span class="tag">&lt;/<span class="name">table_id</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">instructions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">instruction</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">order</span>&gt;</span>0<span class="tag">&lt;/<span class="name">order</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">apply-actions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">action</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">order</span>&gt;</span>0<span class="tag">&lt;/<span class="name">order</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">output-action</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">output-node-connector</span>&gt;</span>2<span class="tag">&lt;/<span class="name">output-node-connector</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">output-action</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">action</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">apply-actions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">instruction</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">instructions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">flow</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>协议字段补充：</p>
+<table>
+<thead>
+<tr>
+<th>协议</th>
+<th>字段值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IPv4</td>
+<td>0x0800</td>
+</tr>
+<tr>
+<td>ARP</td>
+<td>0x0806</td>
+</tr>
+<tr>
+<td>PPPoE</td>
+<td>0x8864</td>
+</tr>
+<tr>
+<td>IPv6</td>
+<td>0x86DD</td>
+</tr>
+<tr>
+<td>MPLS Label</td>
+<td>0x8847</td>
+</tr>
+<tr>
+<td>802.1Q tag</td>
+<td>0x8100</td>
+</tr>
+</tbody>
+</table>
+<p><strong>场景二 匹配nw_proto字段</strong></p>
+<p>匹配到目的IP地址为10.0.0.2/32的ICMP报文，并将其转发到2端口。注意ip-protocol为1，代表ICMP。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">flow</span> <span class="attr">xmlns</span>=<span class="string">&quot;urn:opendaylight:flow:inventory&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">priority</span>&gt;</span>200<span class="tag">&lt;/<span class="name">priority</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">flow-name</span>&gt;</span>Foo1<span class="tag">&lt;/<span class="name">flow-name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">idle-timeout</span>&gt;</span>0<span class="tag">&lt;/<span class="name">idle-timeout</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">hard-timeout</span>&gt;</span>0<span class="tag">&lt;/<span class="name">hard-timeout</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">match</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ethernet-match</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ethernet-type</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">type</span>&gt;</span>2048<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ethernet-type</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ethernet-match</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ipv4-destination</span>&gt;</span>10.0.0.2/32<span class="tag">&lt;/<span class="name">ipv4-destination</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ip-match</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ip-protocol</span>&gt;</span>1<span class="tag">&lt;/<span class="name">ip-protocol</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ip-match</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">match</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">id</span>&gt;</span>114<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">table_id</span>&gt;</span>0<span class="tag">&lt;/<span class="name">table_id</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">instructions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">instruction</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">order</span>&gt;</span>0<span class="tag">&lt;/<span class="name">order</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">apply-actions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">action</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">order</span>&gt;</span>0<span class="tag">&lt;/<span class="name">order</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">output-action</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">output-node-connector</span>&gt;</span>2<span class="tag">&lt;/<span class="name">output-node-connector</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">output-action</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">action</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">apply-actions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">instruction</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">instructions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">flow</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>IP协议字段(Protocol)补充：</p>
+<table>
+<thead>
+<tr>
+<th>数值</th>
+<th>值描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>保留字段，用于IPv6(跳跃点到跳跃点选项)</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Internet控制消息 (ICMP)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Internet组管理 (IGMP)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>网关到网关 (GGP)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>1P中的IP(封装)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>流</td>
+</tr>
+<tr>
+<td>6</td>
+<td>传输控制 (TCP)</td>
+</tr>
+<tr>
+<td>7</td>
+<td>CBT</td>
+</tr>
+<tr>
+<td>8</td>
+<td>外部网关协议 (EGP)</td>
+</tr>
+<tr>
+<td>9</td>
+<td>任何私有内部网关(Cisco在它的IGRP实现中使用) (IGP)</td>
+</tr>
+<tr>
+<td>10</td>
+<td>BBNRCC监视</td>
+</tr>
+<tr>
+<td>11</td>
+<td>网络语音协议</td>
+</tr>
+<tr>
+<td>12</td>
+<td>PUP</td>
+</tr>
+<tr>
+<td>13</td>
+<td>ARGUS</td>
+</tr>
+<tr>
+<td>14</td>
+<td>EMCON</td>
+</tr>
+<tr>
+<td>15</td>
+<td>网络诊断工具</td>
+</tr>
+<tr>
+<td>16</td>
+<td>混乱(Chaos)</td>
+</tr>
+<tr>
+<td>17</td>
+<td>用户数据报文 (UDP)</td>
+</tr>
+<tr>
+<td>18</td>
+<td>复用</td>
+</tr>
+<tr>
+<td>19</td>
+<td>DCN测量子系统</td>
+</tr>
+<tr>
+<td>20</td>
+<td>主机监视</td>
+</tr>
+<tr>
+<td>21</td>
+<td>包无线测量</td>
+</tr>
+<tr>
+<td>22</td>
+<td>XEROXNSIDP</td>
+</tr>
+<tr>
+<td>23</td>
+<td>Trunk-1</td>
+</tr>
+<tr>
+<td>24</td>
+<td>Trunk-2</td>
+</tr>
+<tr>
+<td>25</td>
+<td>leaf-1</td>
+</tr>
+<tr>
+<td>26</td>
+<td>1eaf-2</td>
+</tr>
+<tr>
+<td>27</td>
+<td>可靠的数据协议</td>
+</tr>
+<tr>
+<td>28</td>
+<td>Internet可靠交易</td>
+</tr>
+<tr>
+<td>29</td>
+<td>1SO传输协议第四类 (TP4)</td>
+</tr>
+<tr>
+<td>30</td>
+<td>大块数据传输协议</td>
+</tr>
+<tr>
+<td>31</td>
+<td>MFE网络服务协议</td>
+</tr>
+<tr>
+<td>32</td>
+<td>MERIT节点之间协议</td>
+</tr>
+<tr>
+<td>33</td>
+<td>序列交换协议</td>
+</tr>
+<tr>
+<td>34</td>
+<td>第三方连接协议</td>
+</tr>
+<tr>
+<td>35</td>
+<td>域之间策略路由协议</td>
+</tr>
+<tr>
+<td>36</td>
+<td>XTP</td>
+</tr>
+<tr>
+<td>37</td>
+<td>数据报文传递协议</td>
+</tr>
+<tr>
+<td>38</td>
+<td>IDPR控制消息传输协议</td>
+</tr>
+<tr>
+<td>39</td>
+<td>TP+ +传输协议</td>
+</tr>
+<tr>
+<td>40</td>
+<td>IL传输协议</td>
+</tr>
+<tr>
+<td>41</td>
+<td>1Pv6</td>
+</tr>
+<tr>
+<td>42</td>
+<td>资源命令路由协议</td>
+</tr>
+<tr>
+<td>43</td>
+<td>1Pv6的路由报头</td>
+</tr>
+<tr>
+<td>44</td>
+<td>1Pv6的片报头</td>
+</tr>
+<tr>
+<td>45</td>
+<td>域之间路由协议</td>
+</tr>
+<tr>
+<td>46</td>
+<td>保留协议</td>
+</tr>
+<tr>
+<td>47</td>
+<td>通用路由封装</td>
+</tr>
+<tr>
+<td>48</td>
+<td>可移动主机路由协议</td>
+</tr>
+<tr>
+<td>49</td>
+<td>BNA</td>
+</tr>
+<tr>
+<td>50</td>
+<td>1Pv6封装安全有效负载</td>
+</tr>
+<tr>
+<td>51</td>
+<td>1Pv6验证报头</td>
+</tr>
+<tr>
+<td>52</td>
+<td>集成的网络层安全TUBA</td>
+</tr>
+<tr>
+<td>53</td>
+<td>带加密的IP</td>
+</tr>
+<tr>
+<td>54</td>
+<td>NBMA地址解析协议</td>
+</tr>
+<tr>
+<td>55</td>
+<td>IP可移动性</td>
+</tr>
+<tr>
+<td>56</td>
+<td>使用Kryptonet钥匙管理的传输层安全协议</td>
+</tr>
+<tr>
+<td>57</td>
+<td>SKIP</td>
+</tr>
+<tr>
+<td>58</td>
+<td>1Pv6的ICMP</td>
+</tr>
+<tr>
+<td>59</td>
+<td>1Pv6的无下一个报头</td>
+</tr>
+<tr>
+<td>60</td>
+<td>IPv6的信宿选项</td>
+</tr>
+<tr>
+<td>61</td>
+<td>任何主机内部协议</td>
+</tr>
+<tr>
+<td>62</td>
+<td>CFTP</td>
+</tr>
+<tr>
+<td>63</td>
+<td>任何本地网络</td>
+</tr>
+<tr>
+<td>64</td>
+<td>SATNET和BackroomEXPAK</td>
+</tr>
+<tr>
+<td>65</td>
+<td>Kryptolan</td>
+</tr>
+<tr>
+<td>66</td>
+<td>MIT远程虚拟磁盘协议</td>
+</tr>
+<tr>
+<td>67</td>
+<td>Internet Pluribus包核心</td>
+</tr>
+<tr>
+<td>68</td>
+<td>任何分布式文件系统</td>
+</tr>
+<tr>
+<td>69</td>
+<td>SATNET监视</td>
+</tr>
+<tr>
+<td>70</td>
+<td>VISA协议</td>
+</tr>
+<tr>
+<td>71</td>
+<td>Internet包核心工具</td>
+</tr>
+<tr>
+<td>72</td>
+<td>计算机协议Network Executive</td>
+</tr>
+<tr>
+<td>73</td>
+<td>计算机协议Heart Beat</td>
+</tr>
+<tr>
+<td>74</td>
+<td>Wang Span网络</td>
+</tr>
+<tr>
+<td>75</td>
+<td>包视频协议</td>
+</tr>
+<tr>
+<td>76</td>
+<td>Backroom SATNET监视</td>
+</tr>
+<tr>
+<td>77</td>
+<td>SUN ND PROTOCOL—临时</td>
+</tr>
+<tr>
+<td>78</td>
+<td>WIDEBAND监视</td>
+</tr>
+<tr>
+<td>79</td>
+<td>WIDEBAND EXPAK</td>
+</tr>
+<tr>
+<td>80</td>
+<td>ISO Internet协议</td>
+</tr>
+<tr>
+<td>81</td>
+<td>VMTP</td>
+</tr>
+<tr>
+<td>82</td>
+<td>SECURE—VMTP(安全的VMTP)</td>
+</tr>
+<tr>
+<td>83</td>
+<td>VINES</td>
+</tr>
+<tr>
+<td>84</td>
+<td>TTP</td>
+</tr>
+<tr>
+<td>85</td>
+<td>NSFNET—IGP</td>
+</tr>
+<tr>
+<td>86</td>
+<td>不同网关协议</td>
+</tr>
+<tr>
+<td>87</td>
+<td>TCF</td>
+</tr>
+<tr>
+<td>88</td>
+<td>EIGRP</td>
+</tr>
+<tr>
+<td>89</td>
+<td>OSPF IGP</td>
+</tr>
+<tr>
+<td>90</td>
+<td>Sprite RPC协议</td>
+</tr>
+<tr>
+<td>9]</td>
+<td>Locus地址解析协议</td>
+</tr>
+<tr>
+<td>92</td>
+<td>多播传输协议</td>
+</tr>
+<tr>
+<td>93</td>
+<td>AX.25帧</td>
+</tr>
+<tr>
+<td>94</td>
+<td>IP内部的IP封装协议</td>
+</tr>
+<tr>
+<td>95</td>
+<td>可移动网络互连控制协议</td>
+</tr>
+<tr>
+<td>96</td>
+<td>旗语通讯安全协议</td>
+</tr>
+<tr>
+<td>97</td>
+<td>IP中的以太封装</td>
+</tr>
+<tr>
+<td>98</td>
+<td>封装报头</td>
+</tr>
+<tr>
+<td>99</td>
+<td>任何私有加密方案</td>
+</tr>
+<tr>
+<td>100</td>
+<td>GMTP</td>
+</tr>
+<tr>
+<td>101</td>
+<td>Ipsilon流量管理协议</td>
+</tr>
+<tr>
+<td>102</td>
+<td>PNNI over IP</td>
+</tr>
+<tr>
+<td>103</td>
+<td>协议独立多播</td>
+</tr>
+<tr>
+<td>104</td>
+<td>ARIS</td>
+</tr>
+<tr>
+<td>105</td>
+<td>SCPS</td>
+</tr>
+<tr>
+<td>106</td>
+<td>QNX</td>
+</tr>
+<tr>
+<td>107</td>
+<td>活动网络</td>
+</tr>
+<tr>
+<td>108</td>
+<td>IP有效负载压缩协议</td>
+</tr>
+<tr>
+<td>109</td>
+<td>Sitara网络协议</td>
+</tr>
+<tr>
+<td>110</td>
+<td>Compaq对等协议</td>
+</tr>
+<tr>
+<td>111</td>
+<td>IP中的IPX</td>
+</tr>
+<tr>
+<td>112</td>
+<td>虚拟路由器冗余协议</td>
+</tr>
+<tr>
+<td>113</td>
+<td>PGM可靠传输协议</td>
+</tr>
+<tr>
+<td>114</td>
+<td>任何0跳跃协议</td>
+</tr>
+<tr>
+<td>115</td>
+<td>第二层隧道协议</td>
+</tr>
+<tr>
+<td>116</td>
+<td>D-II数据交换(DDX)</td>
+</tr>
+<tr>
+<td>117</td>
+<td>交互式代理传输协议</td>
+</tr>
+<tr>
+<td>118</td>
+<td>日程计划传输协议</td>
+</tr>
+<tr>
+<td>119</td>
+<td>SpectraLink无线协议</td>
+</tr>
+<tr>
+<td>120</td>
+<td>UTI</td>
+</tr>
+<tr>
+<td>121</td>
+<td>简单消息协议</td>
+</tr>
+<tr>
+<td>122</td>
+<td>SM</td>
+</tr>
+<tr>
+<td>123</td>
+<td>性能透明性协议</td>
+</tr>
+<tr>
+<td>124</td>
+<td>ISIS over IPv4</td>
+</tr>
+<tr>
+<td>125</td>
+<td>FIRE</td>
+</tr>
+<tr>
+<td>126</td>
+<td>Combat无线传输协议</td>
+</tr>
+<tr>
+<td>127</td>
+<td>Combat无线用户数据报文</td>
+</tr>
+<tr>
+<td>128</td>
+<td>SSCOPMCE</td>
+</tr>
+<tr>
+<td>129</td>
+<td>IPLT</td>
+</tr>
+<tr>
+<td>130</td>
+<td>安全包防护</td>
+</tr>
+<tr>
+<td>131</td>
+<td>IP中的私有IP封装</td>
+</tr>
+<tr>
+<td>132</td>
+<td>流控制传输协议</td>
+</tr>
+<tr>
+<td>133～254</td>
+<td>未分配</td>
+</tr>
+<tr>
+<td>255</td>
+<td>保留</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-L4层流表下发与验证">3.L4层流表下发与验证</h3>
+<blockquote>
+<p>L4对应的OSI模型中的四层，即流表对应的TCP/UDP源端口（TCP/UDP src port）、TCP/UDP目的端口号（TCP/UDP dst port）字段。本实验匹配TCP目的端口。</p>
+</blockquote>
+<p>流表：匹配到目的IP地址为10.0.0.2/32且目的端口为5001的TCP报文，将其转发到2端口。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">flow</span> <span class="attr">xmlns</span>=<span class="string">&quot;urn:opendaylight:flow:inventory&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">priority</span>&gt;</span>200<span class="tag">&lt;/<span class="name">priority</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">flow-name</span>&gt;</span>Foo1<span class="tag">&lt;/<span class="name">flow-name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">idle-timeout</span>&gt;</span>0<span class="tag">&lt;/<span class="name">idle-timeout</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">hard-timeout</span>&gt;</span>0<span class="tag">&lt;/<span class="name">hard-timeout</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">match</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">tcp-destination-port</span>&gt;</span>5001<span class="tag">&lt;/<span class="name">tcp-destination-port</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ethernet-match</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ethernet-type</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">type</span>&gt;</span>2048<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ethernet-type</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ethernet-match</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ipv4-destination</span>&gt;</span>10.0.0.2/32<span class="tag">&lt;/<span class="name">ipv4-destination</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ip-match</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ip-protocol</span>&gt;</span>6<span class="tag">&lt;/<span class="name">ip-protocol</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ip-match</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">match</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">id</span>&gt;</span>117<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">table_id</span>&gt;</span>0<span class="tag">&lt;/<span class="name">table_id</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">instructions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">instruction</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">order</span>&gt;</span>0<span class="tag">&lt;/<span class="name">order</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">apply-actions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">action</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">order</span>&gt;</span>0<span class="tag">&lt;/<span class="name">order</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">output-action</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">output-node-connector</span>&gt;</span>2<span class="tag">&lt;/<span class="name">output-node-connector</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">output-action</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">action</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">apply-actions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">instruction</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">instructions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">flow</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>流表：下发arp匹配流表。注意arp匹配的格式。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">flow</span> <span class="attr">xmlns</span>=<span class="string">&quot;urn:opendaylight:flow:inventory&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">priority</span>&gt;</span>200<span class="tag">&lt;/<span class="name">priority</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">flow-name</span>&gt;</span>Foo1<span class="tag">&lt;/<span class="name">flow-name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">idle-timeout</span>&gt;</span>0<span class="tag">&lt;/<span class="name">idle-timeout</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">hard-timeout</span>&gt;</span>0<span class="tag">&lt;/<span class="name">hard-timeout</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">match</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ethernet-match</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ethernet-type</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">type</span>&gt;</span>2054<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ethernet-type</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ethernet-match</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">match</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">id</span>&gt;</span>119<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">table_id</span>&gt;</span>0<span class="tag">&lt;/<span class="name">table_id</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">instructions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">instruction</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">order</span>&gt;</span>0<span class="tag">&lt;/<span class="name">order</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">apply-actions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">action</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">order</span>&gt;</span>0<span class="tag">&lt;/<span class="name">order</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">output-action</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">output-node-connector</span>&gt;</span>FLOOD<span class="tag">&lt;/<span class="name">output-node-connector</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">max-length</span>&gt;</span>0<span class="tag">&lt;/<span class="name">max-length</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">output-action</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">action</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">apply-actions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">instruction</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">instructions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">flow</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="补充：">补充：</h3>
+<p>丢弃：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">action</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">order</span>&gt;</span>0<span class="tag">&lt;/<span class="name">order</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">drop-action</span>&gt;</span><span class="tag">&lt;/<span class="name">drop-action</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">action</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root@SDN:/home/low/Desktop# ovs-ofctl dump-flows s1</span><br><span class="line">NXST_FLOW reply (xid=0x4):</span><br><span class="line"> cookie=0x0, duration=5.603s, table=0, n_packets=0, n_bytes=0, idle_age=5, priority=200,dl_src=00:00:00:00:00:01,dl_dst=00:00:00:00:00:02 actions=drop</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Low Bee</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://lowbee.fun/2020/07/01/%E6%9A%91%E6%9C%9F%E5%AE%9E%E8%AE%ADSDN-OpenDayLight/">http://lowbee.fun/2020/07/01/%E6%9A%91%E6%9C%9F%E5%AE%9E%E8%AE%ADSDN-OpenDayLight/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/OpenDayLight/">OpenDayLight</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/Screen-Shot-2019-05-01-at-2.32.04-pm.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> Donate</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/07/03/%E6%9A%91%E6%9C%9F%E5%AE%9E%E8%AE%ADSDN-%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/"><img class="prev-cover" src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/Screen-Shot-2019-05-01-at-2.32.04-pm.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">暑期实训SDN--负载均衡</div></div></a></div><div class="next-post pull-right"><a href="/2020/07/01/%E6%9A%91%E6%9C%9F%E5%AE%9E%E8%AE%ADSDN-Mininet/"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/Screen-Shot-2019-05-01-at-2.32.04-pm.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">暑期实训SDN--Mininet</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2020/07/04/Docker/" title="Docker"><img class="cover" src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/default.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-07-04</div><div class="title">Docker</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/头像.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Low Bee</div><div class="author-info__description">科研废物</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">70</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">40</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">8</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lowbee2019"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/lowbee2019" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:lowbee@vip.qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">社会主义接班人！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-%E6%B5%81%E8%A1%A8%E7%BB%93%E6%9E%84"><span class="toc-number">1.</span> <span class="toc-text">0x01 流表结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81%E5%8C%B9%E9%85%8D%E5%9F%9F%EF%BC%9A"><span class="toc-number">1.0.1.</span> <span class="toc-text">1、匹配域：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81%E4%BC%98%E5%85%88%E7%BA%A7%EF%BC%9A%E6%B5%81%E8%A1%A8%E9%A1%B9%E7%9A%84%E5%8C%B9%E9%85%8D%E6%AC%A1%E5%BA%8F%E3%80%82"><span class="toc-number">1.0.2.</span> <span class="toc-text">2、优先级：流表项的匹配次序。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81%E8%AE%A1%E6%95%B0%E5%99%A8%EF%BC%9A"><span class="toc-number">1.0.3.</span> <span class="toc-text">3、计数器：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%E3%80%81Instructions%E6%8C%87%E4%BB%A4%E9%9B%86%EF%BC%9A"><span class="toc-number">1.0.4.</span> <span class="toc-text">4、Instructions指令集：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5%E3%80%81%E8%B6%85%E6%97%B6%EF%BC%9A%E6%9C%80%E5%A4%A7%E6%97%B6%E9%97%B4%E8%AE%A1%E6%95%B0%E6%88%96%E6%B5%81%E6%9C%89%E6%95%88%E6%97%B6%E9%97%B4"><span class="toc-number">1.0.5.</span> <span class="toc-text">5、超时：最大时间计数或流有效时间</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6%E3%80%81cookie%EF%BC%9A"><span class="toc-number">1.0.6.</span> <span class="toc-text">6、cookie：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-%E5%8C%B9%E9%85%8D%E5%9F%9F%E8%A7%A3%E6%9E%90%E6%B5%81%E7%A8%8B%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">0x02 匹配域解析流程：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#OpenFlow1-3%E5%8C%B9%E9%85%8D%E6%B5%81%E7%A8%8B%E5%A6%82%E4%B8%8B%EF%BC%9A"><span class="toc-number">2.0.1.</span> <span class="toc-text">OpenFlow1.3匹配流程如下：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-%E5%AE%9E%E9%AA%8C%E7%8E%AF%E5%A2%83"><span class="toc-number">3.</span> <span class="toc-text">0x03 实验环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x04-%E6%B5%81%E8%A1%A8%E7%9A%84%E4%B8%8B%E5%8F%91"><span class="toc-number">4.</span> <span class="toc-text">0x04 流表的下发</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-L2%E5%B1%82%E6%B5%81%E8%A1%A8%E4%B8%8B%E5%8F%91%E4%B8%8E%E9%AA%8C%E8%AF%81"><span class="toc-number">4.1.</span> <span class="toc-text">1.L2层流表下发与验证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-L3%E5%B1%82%E6%B5%81%E8%A1%A8%E4%B8%8B%E5%8F%91%E4%B8%8E%E9%AA%8C%E8%AF%81"><span class="toc-number">4.2.</span> <span class="toc-text">2.L3层流表下发与验证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-L4%E5%B1%82%E6%B5%81%E8%A1%A8%E4%B8%8B%E5%8F%91%E4%B8%8E%E9%AA%8C%E8%AF%81"><span class="toc-number">4.3.</span> <span class="toc-text">3.L4层流表下发与验证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A5%E5%85%85%EF%BC%9A"><span class="toc-number">4.4.</span> <span class="toc-text">补充：</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/12/20/Paper-33/" title="ClusterGAN: Latent Space Clustering in Generative Adversarial Networks"><img src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/default.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ClusterGAN: Latent Space Clustering in Generative Adversarial Networks"/></a><div class="content"><a class="title" href="/2021/12/20/Paper-33/" title="ClusterGAN: Latent Space Clustering in Generative Adversarial Networks">ClusterGAN: Latent Space Clustering in Generative Adversarial Networks</a><time datetime="2021-12-20T02:47:34.000Z" title="Created 2021-12-20 10:47:34">2021-12-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/26/Reinforcement-Learning-ZouWei-3/" title="Reinforcement Learning ZouWei(III)"><img src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/f5d6603125a166875ed1666ca908e45b.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Reinforcement Learning ZouWei(III)"/></a><div class="content"><a class="title" href="/2021/11/26/Reinforcement-Learning-ZouWei-3/" title="Reinforcement Learning ZouWei(III)">Reinforcement Learning ZouWei(III)</a><time datetime="2021-11-26T01:26:30.000Z" title="Created 2021-11-26 09:26:30">2021-11-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/25/Reinforcement-Learning-ZouWei-2/" title="Reinforcement Learning ZouWei(II)"><img src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/f5d6603125a166875ed1666ca908e45b.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Reinforcement Learning ZouWei(II)"/></a><div class="content"><a class="title" href="/2021/11/25/Reinforcement-Learning-ZouWei-2/" title="Reinforcement Learning ZouWei(II)">Reinforcement Learning ZouWei(II)</a><time datetime="2021-11-25T11:24:14.000Z" title="Created 2021-11-25 19:24:14">2021-11-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/22/Reinforcement-Learning-ZouWei-1/" title="Reinforcement Learning ZouWei(I)"><img src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/f5d6603125a166875ed1666ca908e45b.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Reinforcement Learning ZouWei(I)"/></a><div class="content"><a class="title" href="/2021/11/22/Reinforcement-Learning-ZouWei-1/" title="Reinforcement Learning ZouWei(I)">Reinforcement Learning ZouWei(I)</a><time datetime="2021-11-22T13:46:09.000Z" title="Created 2021-11-22 21:46:09">2021-11-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/06/17/Paper-32/" title="Federated Evaluation of On-device Personalization"><img src="https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/default.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Federated Evaluation of On-device Personalization"/></a><div class="content"><a class="title" href="/2021/06/17/Paper-32/" title="Federated Evaluation of On-device Personalization">Federated Evaluation of On-device Personalization</a><time datetime="2021-06-17T13:07:02.000Z" title="Created 2021-06-17 21:07:02">2021-06-17</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://cdn.jsdelivr.net/gh/lowbee2019/PicGo@master/img/Screen-Shot-2019-05-01-at-2.32.04-pm.png')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Low Bee</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">Local search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.css"><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', '', 'katex-wrap')
+  })
+})()</script></div><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-show-text.min.js" data-mobile="true" data-text="富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="true" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"./live2d_models/haruna/22/model.2017.school.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body></html>
